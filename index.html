@@ -3,30 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vandressa Solos do Mar | Advogada – INSS | Benefícios | Direito da Saúde</title>
+<title>Vandressa Solos do Mar | Advogada Previdenciária – INSS | Benefícios | Direito da Saúde</title>
+<meta name="description" content="Advogada especialista em INSS, benefícios previdenciários e direito da saúde. Atendimento humanizado em Fortaleza/CE e todo o Brasil. OAB/CE 46.161.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cinzel:wght@400;500;600&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cinzel:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --creme: #F5EFE4;
-    --bege: #E8D9C0;
-    --bege-medio: #D4BC96;
-    --caramelo: #B8914A;
+    --creme: #F6F0E8;
+    --bege: #EAD9C2;
+    --bege-medio: #D0B48A;
+    --caramelo: #B07D3A;
     --dourado: #C9993A;
-    --dourado-claro: #E8C060;
-    --dourado-escuro: #9A7230;
-    --marrom: #5C3D1A;
-    --texto: #3A2810;
-    --texto-suave: #6B4F2A;
+    --dourado-claro: #E0B86A;
+    --dourado-escuro: #8A621E;
+    --marrom: #2E1A08;
+    --marrom-medio: #4A2C10;
+    --texto: #2A1A08;
+    --texto-suave: #6B4E2A;
+    --texto-claro: #9A7850;
     --branco: #FDFAF5;
+    --cinza: #F0EBE3;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
 
   body {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Inter', sans-serif;
     background: var(--creme);
     color: var(--texto);
     overflow-x: hidden;
@@ -35,38 +38,38 @@
   /* ── NAV ── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(245,239,228,0.95);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(201,153,58,0.25);
-    padding: 0 6vw;
-    height: 72px;
+    background: rgba(246,240,232,0.96);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(176,125,58,0.15);
+    padding: 0 5vw;
+    height: 68px;
     display: flex; align-items: center; justify-content: space-between;
     transition: box-shadow .3s;
   }
-  nav.scrolled { box-shadow: 0 4px 24px rgba(90,50,10,.10); }
+  nav.scrolled { box-shadow: 0 2px 20px rgba(46,26,8,.08); }
 
   .nav-logo {
     font-family: 'Cinzel', serif;
-    font-size: 1rem;
+    font-size: .82rem;
     letter-spacing: .18em;
     color: var(--texto);
     text-decoration: none;
     display: flex; align-items: center; gap: 10px;
   }
   .nav-logo-v {
-    width: 34px; height: 34px;
+    width: 32px; height: 32px;
     border: 1.5px solid var(--caramelo);
     display: flex; align-items: center; justify-content: center;
-    font-size: 1.1rem; font-weight: 600; color: var(--caramelo);
-    letter-spacing: 0;
+    font-size: 1rem; font-weight: 600; color: var(--caramelo);
   }
 
   .nav-links {
-    display: flex; gap: 2.2rem; list-style: none;
+    display: flex; gap: 2rem; list-style: none;
+    align-items: center;
   }
   .nav-links a {
     font-family: 'Cinzel', serif;
-    font-size: .7rem; letter-spacing: .15em;
+    font-size: .68rem; letter-spacing: .14em;
     color: var(--texto-suave); text-decoration: none;
     text-transform: uppercase;
     transition: color .2s;
@@ -74,215 +77,210 @@
   .nav-links a:hover { color: var(--caramelo); }
 
   .nav-cta {
-    background: var(--caramelo);
+    background: var(--caramelo) !important;
     color: var(--branco) !important;
-    padding: 8px 20px !important;
-    letter-spacing: .12em !important;
-    border-radius: 1px;
-    transition: background .2s !important;
+    padding: 9px 22px !important;
+    border-radius: 2px;
   }
-  .nav-cta:hover { background: var(--dourado-escuro) !important; color: var(--branco) !important; }
+  .nav-cta:hover { background: var(--dourado-escuro) !important; }
 
   /* ── HERO ── */
   #hero {
     min-height: 100vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding-top: 72px;
+    padding-top: 68px;
     position: relative;
     overflow: hidden;
-  }
-
-  .hero-bg-ornament {
-    position: absolute; inset: 0;
-    background:
-      radial-gradient(ellipse 60% 70% at 75% 50%, rgba(201,153,58,.08) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 40% at 10% 80%, rgba(184,145,74,.06) 0%, transparent 60%);
-    pointer-events: none;
-  }
-
-  .hero-lines {
-    position: absolute;
-    top: 15%; right: 48%;
-    width: 1px; height: 180px;
-    background: linear-gradient(to bottom, transparent, var(--caramelo), transparent);
-    opacity: .4;
+    background: var(--branco);
   }
 
   .hero-left {
     display: flex; flex-direction: column; justify-content: center;
-    padding: 6vw 4vw 6vw 8vw;
+    padding: 5vw 3vw 5vw 7vw;
     position: relative; z-index: 2;
   }
 
   .hero-eyebrow {
     font-family: 'Cinzel', serif;
-    font-size: .65rem; letter-spacing: .35em;
+    font-size: .62rem; letter-spacing: .3em;
     color: var(--caramelo); text-transform: uppercase;
-    margin-bottom: 1.8rem;
-    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 1.6rem;
+    display: flex; align-items: center; gap: 10px;
   }
   .hero-eyebrow::before {
     content: '';
-    width: 40px; height: 1px;
+    width: 32px; height: 1px;
     background: var(--caramelo);
   }
 
   .hero-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.8rem, 4.5vw, 4.2rem);
+    font-size: clamp(2.4rem, 3.8vw, 3.8rem);
     font-weight: 300;
-    line-height: 1.12;
+    line-height: 1.1;
     color: var(--texto);
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.4rem;
   }
   .hero-title em {
     font-style: italic;
     color: var(--caramelo);
   }
 
-  .hero-slogan {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.1rem, 1.8vw, 1.35rem);
-    font-weight: 400;
-    font-style: italic;
+  .hero-desc {
+    font-size: clamp(.92rem, 1.2vw, 1.05rem);
+    font-weight: 300;
     color: var(--texto-suave);
+    line-height: 1.75;
     margin-bottom: 2.4rem;
-    line-height: 1.5;
-    border-left: 2px solid var(--caramelo);
-    padding-left: 1rem;
+    max-width: 480px;
+  }
+  .hero-desc strong {
+    color: var(--texto);
+    font-weight: 500;
   }
 
   .hero-areas {
-    display: flex; gap: 1rem; flex-wrap: wrap;
-    margin-bottom: 2.8rem;
+    display: flex; gap: .7rem; flex-wrap: wrap;
+    margin-bottom: 2.6rem;
   }
   .hero-area-tag {
     font-family: 'Cinzel', serif;
-    font-size: .62rem; letter-spacing: .15em;
+    font-size: .6rem; letter-spacing: .12em;
     color: var(--caramelo);
-    border: 1px solid rgba(201,153,58,.4);
-    padding: 6px 14px;
+    border: 1px solid rgba(176,125,58,.35);
+    padding: 5px 12px;
     text-transform: uppercase;
-    background: rgba(201,153,58,.05);
+    background: rgba(176,125,58,.04);
   }
 
   .hero-btns {
-    display: flex; gap: 1rem; flex-wrap: wrap;
+    display: flex; gap: .9rem; flex-wrap: wrap;
   }
 
   .btn-primary {
-    font-family: 'Cinzel', serif;
-    font-size: .72rem; letter-spacing: .15em;
-    text-transform: uppercase;
+    font-family: 'Inter', sans-serif;
+    font-size: .82rem;
+    font-weight: 500;
     background: var(--caramelo);
     color: var(--branco);
     border: none; cursor: pointer;
-    padding: 14px 30px;
+    padding: 14px 28px;
     text-decoration: none;
-    display: inline-block;
+    display: inline-flex; align-items: center; gap: 8px;
     transition: background .25s, transform .2s;
+    border-radius: 2px;
   }
   .btn-primary:hover { background: var(--dourado-escuro); transform: translateY(-1px); }
 
   .btn-secondary {
-    font-family: 'Cinzel', serif;
-    font-size: .72rem; letter-spacing: .15em;
-    text-transform: uppercase;
+    font-family: 'Inter', sans-serif;
+    font-size: .82rem;
+    font-weight: 400;
     background: transparent;
     color: var(--caramelo);
-    border: 1px solid var(--caramelo);
+    border: 1.5px solid rgba(176,125,58,.5);
     cursor: pointer;
-    padding: 14px 30px;
+    padding: 14px 28px;
     text-decoration: none;
-    display: inline-block;
+    display: inline-flex; align-items: center; gap: 8px;
     transition: all .25s;
+    border-radius: 2px;
   }
-  .btn-secondary:hover { background: rgba(201,153,58,.1); transform: translateY(-1px); }
+  .btn-secondary:hover { border-color: var(--caramelo); background: rgba(176,125,58,.06); transform: translateY(-1px); }
 
   .hero-right {
     position: relative; display: flex;
     align-items: flex-end; justify-content: center;
     overflow: hidden;
+    background: var(--cinza);
   }
 
-  .hero-photo-frame {
+  .hero-photo-wrap {
     position: relative; z-index: 2;
     width: 100%; height: 100%;
-    min-height: 600px;
+    min-height: 620px;
   }
-  .hero-photo-frame img {
+  .hero-photo-wrap img.hero-main-img {
     width: 100%; height: 100%;
     object-fit: cover;
     object-position: center top;
-    filter: saturate(0.92) brightness(1.01);
   }
 
-  /* Gold frame overlay */
-  .hero-photo-frame::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(to right, var(--creme) 0%, transparent 8%);
-    z-index: 3; pointer-events: none;
-  }
-  .hero-photo-frame::after {
+  .hero-photo-wrap::after {
     content: '';
     position: absolute; bottom: 0; left: 0; right: 0;
-    height: 30%;
-    background: linear-gradient(to top, var(--creme) 0%, transparent 100%);
+    height: 20%;
+    background: linear-gradient(to top, var(--branco) 0%, transparent 100%);
+    z-index: 3; pointer-events: none;
+  }
+  .hero-photo-wrap::before {
+    content: '';
+    position: absolute; top: 0; left: 0; bottom: 0;
+    width: 10%;
+    background: linear-gradient(to right, var(--branco) 0%, transparent 100%);
     z-index: 3; pointer-events: none;
   }
 
-  .hero-oab {
+  .hero-oab-badge {
     position: absolute;
-    bottom: 60px; right: 40px;
+    bottom: 48px; left: 36px;
     z-index: 10;
-    text-align: right;
+    background: rgba(253,250,245,.95);
+    border: 1px solid rgba(176,125,58,.25);
+    padding: 10px 16px;
+    backdrop-filter: blur(8px);
   }
-  .hero-oab-text {
+  .hero-oab-badge span {
     font-family: 'Cinzel', serif;
-    font-size: .62rem; letter-spacing: .25em;
-    color: var(--caramelo);
-    background: rgba(245,239,228,.9);
-    padding: 8px 14px;
-    border: 1px solid rgba(201,153,58,.3);
+    font-size: .6rem; letter-spacing: .22em;
+    color: var(--caramelo); text-transform: uppercase;
+    display: block;
   }
 
-  /* ── ORNAMENT DIVIDER ── */
+  /* ── URGENCY STRIP ── */
+  .urgency-strip {
+    background: var(--marrom);
+    padding: .9rem 5vw;
+    display: flex; align-items: center; justify-content: center; gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .urgency-item {
+    display: flex; align-items: center; gap: 8px;
+    font-size: .82rem;
+    color: var(--bege);
+    font-weight: 300;
+  }
+  .urgency-item svg { flex-shrink: 0; }
+  .urgency-divider {
+    width: 1px; height: 16px;
+    background: rgba(176,125,58,.35);
+  }
+
+  /* ── DIVIDER ── */
   .ornament-divider {
     display: flex; align-items: center; justify-content: center;
-    gap: 16px; padding: 3rem 0 1rem;
+    gap: 14px; padding: 2.5rem 0 .5rem;
   }
-  .ornament-divider::before,
-  .ornament-divider::after {
+  .ornament-divider::before, .ornament-divider::after {
     content: '';
-    flex: 1; max-width: 200px;
-    height: 1px;
+    flex: 1; max-width: 160px; height: 1px;
     background: linear-gradient(to right, transparent, var(--bege-medio));
   }
-  .ornament-divider::after {
-    background: linear-gradient(to left, transparent, var(--bege-medio));
-  }
-  .ornament-diamond {
-    width: 8px; height: 8px;
-    background: var(--caramelo);
-    transform: rotate(45deg);
-  }
+  .ornament-divider::after { background: linear-gradient(to left, transparent, var(--bege-medio)); }
+  .ornament-diamond { width: 7px; height: 7px; background: var(--caramelo); transform: rotate(45deg); }
 
   /* ── SECTION HEADERS ── */
-  .section-header {
-    text-align: center;
-    margin-bottom: 4rem;
-  }
+  .section-header { text-align: center; margin-bottom: 3.5rem; }
   .section-eyebrow {
     font-family: 'Cinzel', serif;
-    font-size: .62rem; letter-spacing: .35em;
+    font-size: .6rem; letter-spacing: .3em;
     color: var(--caramelo); text-transform: uppercase;
-    display: block; margin-bottom: 1rem;
+    display: block; margin-bottom: .9rem;
   }
   .section-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
     font-weight: 300;
     color: var(--texto);
     line-height: 1.2;
@@ -291,100 +289,102 @@
 
   /* ── SOBRE ── */
   #sobre {
-    padding: 7rem 8vw;
+    padding: 6rem 6vw;
     background: var(--branco);
     position: relative;
     overflow: hidden;
   }
-  #sobre::before {
-    content: 'V';
-    position: absolute;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 30vw; font-weight: 300;
-    color: rgba(201,153,58,.04);
-    top: -5%; right: -5%;
-    line-height: 1;
-    pointer-events: none;
-    user-select: none;
-  }
 
   .sobre-grid {
     display: grid;
-    grid-template-columns: 1fr 1.4fr;
-    gap: 6vw;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 5vw;
     align-items: center;
-    max-width: 1200px;
+    max-width: 1160px;
     margin: 0 auto;
   }
 
-  .sobre-img-wrap {
+  .sobre-photos {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr .6fr;
+    gap: 12px;
+    align-items: end;
+  }
+
+  .sobre-photo-main {
     position: relative;
   }
-  .sobre-img-wrap img {
+  .sobre-photo-main img {
     width: 100%;
-    aspect-ratio: 3/4;
+    aspect-ratio: 2/3;
     object-fit: cover;
     object-position: top;
     display: block;
   }
-  .sobre-img-wrap::before {
+  .sobre-photo-main::before {
     content: '';
     position: absolute;
-    top: -16px; left: -16px;
-    right: 16px; bottom: -16px;
-    border: 1.5px solid rgba(201,153,58,.35);
+    top: -14px; left: -14px;
+    right: 14px; bottom: 14px;
+    border: 1.5px solid rgba(176,125,58,.3);
     z-index: 0;
+    pointer-events: none;
   }
-  .sobre-img-wrap img { position: relative; z-index: 1; }
+  .sobre-photo-main img { position: relative; z-index: 1; }
+
+  .sobre-photo-small img {
+    width: 100%;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+  }
 
   .sobre-content { position: relative; z-index: 2; }
 
   .sobre-content p {
-    font-size: 1rem; line-height: 1.85;
+    font-size: .95rem; line-height: 1.85;
     color: var(--texto-suave);
-    margin-bottom: 1.4rem;
+    margin-bottom: 1.3rem;
     font-weight: 300;
   }
-  .sobre-content p strong {
-    color: var(--texto);
-    font-weight: 400;
-  }
+  .sobre-content p strong { color: var(--texto); font-weight: 500; }
 
   .sobre-credenciais {
     display: flex; gap: 2rem; margin-top: 2rem;
     flex-wrap: wrap;
+    padding-top: 2rem;
+    border-top: 1px solid var(--bege);
   }
-  .credencial {
-    display: flex; flex-direction: column; gap: 2px;
-  }
+  .credencial { display: flex; flex-direction: column; gap: 3px; }
   .credencial-valor {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.8rem; font-weight: 500;
-    color: var(--caramelo);
-    line-height: 1;
+    font-size: 1.9rem; font-weight: 500;
+    color: var(--caramelo); line-height: 1;
   }
   .credencial-label {
-    font-size: .72rem; letter-spacing: .1em;
+    font-size: .7rem; letter-spacing: .08em;
     color: var(--texto-suave); text-transform: uppercase;
   }
 
   /* ── AREAS ── */
   #areas {
-    padding: 7rem 8vw;
+    padding: 6rem 6vw;
     background: var(--creme);
   }
 
   .areas-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-    max-width: 1200px;
+    gap: 1.5px;
+    max-width: 1160px;
     margin: 0 auto;
   }
 
   .area-card {
     background: var(--branco);
-    padding: 3rem 2.5rem;
+    padding: 2.8rem 2.2rem;
     position: relative;
     overflow: hidden;
     transition: transform .3s, box-shadow .3s;
@@ -398,27 +398,23 @@
     transform: scaleX(0); transform-origin: left;
     transition: transform .4s;
   }
-  .area-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(90,50,10,.1); }
+  .area-card:hover { transform: translateY(-3px); box-shadow: 0 10px 36px rgba(46,26,8,.09); }
   .area-card:hover::before { transform: scaleX(1); }
 
-  .area-icon {
-    font-size: 2.2rem; margin-bottom: 1.4rem;
-  }
+  .area-icon { font-size: 2rem; margin-bottom: 1.2rem; }
   .area-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem; font-weight: 500;
-    color: var(--texto);
-    margin-bottom: 1rem;
+    font-size: 1.45rem; font-weight: 500;
+    color: var(--texto); margin-bottom: .9rem;
   }
   .area-desc {
-    font-size: .88rem; line-height: 1.75;
-    color: var(--texto-suave);
-    font-weight: 300;
+    font-size: .87rem; line-height: 1.75;
+    color: var(--texto-suave); font-weight: 300;
   }
   .area-link {
-    display: inline-block; margin-top: 1.4rem;
+    display: inline-block; margin-top: 1.2rem;
     font-family: 'Cinzel', serif;
-    font-size: .62rem; letter-spacing: .15em;
+    font-size: .6rem; letter-spacing: .13em;
     color: var(--caramelo); text-decoration: none;
     text-transform: uppercase;
     border-bottom: 1px solid transparent;
@@ -426,201 +422,343 @@
   }
   .area-link:hover { border-bottom-color: var(--caramelo); }
 
-  /* ── ATENDIMENTO WIZARD ── */
+  /* ── WIZARD ── */
   #atendimento {
-    padding: 7rem 8vw;
-    background: linear-gradient(135deg, var(--marrom) 0%, #3A2008 100%);
+    padding: 6rem 6vw;
+    background: linear-gradient(160deg, #1E0F02 0%, #2E1A08 50%, #3A2210 100%);
     position: relative; overflow: hidden;
   }
-  #atendimento::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9993A' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    pointer-events: none;
+
+  .wizard-headline {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative; z-index: 2;
+  }
+  .wizard-headline .section-eyebrow { color: var(--dourado-claro); }
+  .wizard-headline .section-title {
+    color: #F0E4CC;
+    font-size: clamp(1.6rem, 2.8vw, 2.5rem);
+  }
+  .wizard-headline .section-title em { color: var(--dourado-claro); }
+  .wizard-headline .wizard-lead {
+    font-size: .95rem;
+    color: rgba(240,228,204,.65);
+    font-weight: 300;
+    margin-top: .9rem;
+    letter-spacing: .01em;
   }
 
-  #atendimento .section-eyebrow { color: var(--dourado-claro); }
-  #atendimento .section-title { color: var(--bege); }
-  #atendimento .section-title em { color: var(--dourado-claro); }
-
   .wizard-container {
-    max-width: 900px;
+    max-width: 860px;
     margin: 0 auto;
     position: relative; z-index: 2;
   }
 
-  /* Step indicator */
-  .wizard-steps {
+  /* Progress bar */
+  .wizard-progress {
     display: flex; align-items: center; justify-content: center;
-    gap: 0; margin-bottom: 3rem;
+    gap: 0; margin-bottom: 2.5rem;
   }
   .step-dot {
-    width: 32px; height: 32px;
-    border: 1.5px solid rgba(201,153,58,.4);
+    width: 30px; height: 30px;
+    border: 1.5px solid rgba(176,125,58,.35);
+    border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-family: 'Cinzel', serif; font-size: .7rem;
-    color: rgba(201,153,58,.5);
-    transition: all .3s;
+    font-family: 'Cinzel', serif; font-size: .65rem;
+    color: rgba(176,125,58,.45);
+    transition: all .3s; flex-shrink: 0;
   }
-  .step-dot.active {
-    border-color: var(--caramelo);
-    background: var(--caramelo);
-    color: var(--branco);
-  }
-  .step-dot.done {
-    border-color: var(--caramelo);
-    color: var(--caramelo);
-  }
-  .step-line {
-    width: 60px; height: 1px;
-    background: rgba(201,153,58,.3);
-  }
+  .step-dot.active { border-color: var(--caramelo); background: var(--caramelo); color: var(--branco); }
+  .step-dot.done { border-color: var(--caramelo); color: var(--caramelo); background: rgba(176,125,58,.1); }
+  .step-line { flex: 1; max-width: 80px; height: 1px; background: rgba(176,125,58,.25); transition: background .3s; }
   .step-line.done { background: var(--caramelo); }
 
-  /* Wizard panels */
-  .wizard-panel {
-    display: none;
-    animation: fadeSlideIn .4s ease;
-  }
+  /* Panels */
+  .wizard-panel { display: none; animation: fadeIn .35s ease; }
   .wizard-panel.active { display: block; }
 
-  @keyframes fadeSlideIn {
-    from { opacity: 0; transform: translateY(12px); }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
     to   { opacity: 1; transform: translateY(0); }
   }
 
   .wizard-question {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+    font-size: clamp(1.3rem, 2.2vw, 1.7rem);
     font-weight: 400;
-    color: var(--bege);
+    color: #F0E4CC;
     text-align: center;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
     line-height: 1.4;
   }
 
   .wizard-options {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: .9rem;
   }
+  .wizard-options.cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .wizard-options.cols-3 { grid-template-columns: repeat(3, 1fr); }
 
   .wizard-option {
-    background: rgba(255,255,255,.05);
-    border: 1px solid rgba(201,153,58,.25);
-    padding: 1.4rem 1.6rem;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(176,125,58,.2);
+    padding: 1.3rem 1.5rem;
     cursor: pointer;
-    transition: all .25s;
-    display: flex; align-items: flex-start; gap: 12px;
+    transition: all .22s;
+    display: flex; align-items: flex-start; gap: 10px;
     text-align: left;
+    border-radius: 2px;
   }
   .wizard-option:hover {
-    background: rgba(201,153,58,.12);
-    border-color: var(--caramelo);
+    background: rgba(176,125,58,.1);
+    border-color: rgba(176,125,58,.6);
     transform: translateY(-2px);
   }
-
-  .wizard-option-icon {
-    font-size: 1.4rem; flex-shrink: 0; margin-top: 2px;
+  .wizard-option.selected {
+    background: rgba(176,125,58,.18);
+    border-color: var(--caramelo);
   }
+
+  .wizard-option-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 1px; }
   .wizard-option-text {
-    font-size: .92rem; line-height: 1.5;
-    color: var(--bege);
+    font-size: .88rem; line-height: 1.45;
+    color: rgba(240,228,204,.9);
     font-weight: 300;
   }
 
-  .wizard-back {
-    display: none;
-    margin-top: 2rem; text-align: center;
+  /* Date input in wizard */
+  .wizard-date-wrap {
+    display: flex; flex-direction: column; align-items: center; gap: 1.2rem;
   }
-  .wizard-back button {
+  .wizard-date-wrap label {
+    font-size: .88rem; color: rgba(240,228,204,.75); font-weight: 300;
+    text-align: center;
+  }
+  .wizard-date-input {
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(176,125,58,.3);
+    color: #F0E4CC;
+    padding: 12px 18px;
+    font-size: .95rem;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    border-radius: 2px;
+    width: 220px;
+    text-align: center;
+  }
+  .wizard-date-input:focus { border-color: var(--caramelo); }
+
+  .wizard-text-input {
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(176,125,58,.3);
+    color: #F0E4CC;
+    padding: 12px 18px;
+    font-size: .92rem;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    border-radius: 2px;
+    width: 100%; max-width: 400px;
+    text-align: center;
+  }
+  .wizard-text-input::placeholder { color: rgba(240,228,204,.35); }
+  .wizard-text-input:focus { border-color: var(--caramelo); }
+
+  .wizard-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 2rem;
+  }
+  .wizard-btn-back {
     font-family: 'Cinzel', serif;
-    font-size: .65rem; letter-spacing: .15em;
+    font-size: .62rem; letter-spacing: .12em;
     background: transparent; border: none; cursor: pointer;
-    color: rgba(201,153,58,.7);
+    color: rgba(176,125,58,.6);
     text-transform: uppercase;
     transition: color .2s;
+    padding: 0;
   }
-  .wizard-back button:hover { color: var(--caramelo); }
+  .wizard-btn-back:hover { color: var(--caramelo); }
 
-  /* Final CTA */
-  .wizard-final {
-    text-align: center;
-    padding: 2rem;
-    border: 1px solid rgba(201,153,58,.3);
-    background: rgba(255,255,255,.04);
-    animation: fadeSlideIn .4s ease;
-  }
-  .wizard-final-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.7rem; font-weight: 400;
-    color: var(--dourado-claro);
-    margin-bottom: 1rem;
-  }
-  .wizard-final-text {
-    font-size: .92rem; color: var(--bege);
-    line-height: 1.7; margin-bottom: 2rem;
-    font-weight: 300; opacity: .85;
-  }
-  .wizard-final-btn {
-    display: inline-flex; align-items: center; gap: 10px;
-    background: #25D366;
+  .wizard-btn-next {
+    font-family: 'Inter', sans-serif;
+    font-size: .82rem; font-weight: 500;
+    background: var(--caramelo);
     color: var(--branco);
-    text-decoration: none;
-    padding: 14px 32px;
-    font-family: 'Cinzel', serif;
-    font-size: .75rem; letter-spacing: .12em;
-    text-transform: uppercase;
+    border: none; cursor: pointer;
+    padding: 11px 26px;
+    border-radius: 2px;
     transition: background .2s, transform .2s;
-    margin-bottom: 1rem;
+    display: inline-flex; align-items: center; gap: 6px;
   }
-  .wizard-final-btn:hover { background: #1ebe5d; transform: translateY(-2px); }
+  .wizard-btn-next:hover { background: var(--dourado-escuro); transform: translateY(-1px); }
+  .wizard-btn-next:disabled { opacity: .4; cursor: not-allowed; transform: none; }
+
+  /* Result screen */
+  .wizard-result {
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(176,125,58,.3);
+    padding: 2.5rem;
+    text-align: center;
+    border-radius: 2px;
+    animation: fadeIn .4s ease;
+  }
+  .result-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(37,211,102,.12);
+    border: 1px solid rgba(37,211,102,.3);
+    color: #5DEA96;
+    padding: 6px 16px;
+    font-size: .78rem; letter-spacing: .1em;
+    font-family: 'Cinzel', serif;
+    margin-bottom: 1.4rem;
+    border-radius: 20px;
+  }
+  .result-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.9rem; font-weight: 400;
+    color: var(--dourado-claro);
+    margin-bottom: 1.4rem;
+    line-height: 1.3;
+  }
+
+  .result-card {
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(176,125,58,.15);
+    padding: 1.6rem 2rem;
+    margin-bottom: 1.6rem;
+    text-align: left;
+    border-radius: 2px;
+  }
+  .result-row {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: .7rem 0;
+    border-bottom: 1px solid rgba(176,125,58,.1);
+  }
+  .result-row:last-child { border-bottom: none; }
+  .result-row-label {
+    font-size: .72rem; letter-spacing: .1em;
+    color: var(--caramelo); text-transform: uppercase;
+    font-family: 'Cinzel', serif;
+    flex-shrink: 0; min-width: 160px;
+  }
+  .result-row-value {
+    font-size: .88rem; color: rgba(240,228,204,.85);
+    font-weight: 300; line-height: 1.4;
+  }
+
+  .result-direito {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 12px;
+    font-size: .78rem; font-weight: 500;
+  }
+  .result-direito.sim { background: rgba(37,211,102,.2); color: #5DEA96; }
+  .result-direito.possivel { background: rgba(255,200,0,.15); color: #FFD060; }
+  .result-direito.requer { background: rgba(255,120,60,.15); color: #FF9060; }
+
+  .result-disclaimer {
+    font-size: .78rem; color: rgba(240,228,204,.4);
+    font-weight: 300; line-height: 1.6;
+    margin-bottom: 1.8rem;
+    font-style: italic;
+  }
+
+  .result-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  .btn-whatsapp-green {
+    display: inline-flex; align-items: center; gap: 9px;
+    background: #25D366; color: var(--branco);
+    text-decoration: none;
+    padding: 14px 28px;
+    font-family: 'Inter', sans-serif;
+    font-size: .88rem; font-weight: 500;
+    transition: background .2s, transform .2s;
+    border-radius: 2px;
+  }
+  .btn-whatsapp-green:hover { background: #1ebe5d; transform: translateY(-2px); }
+
+  .btn-outline-gold {
+    display: inline-flex; align-items: center; gap: 9px;
+    background: transparent; color: var(--caramelo);
+    border: 1.5px solid rgba(176,125,58,.5);
+    text-decoration: none;
+    padding: 14px 28px;
+    font-family: 'Inter', sans-serif;
+    font-size: .88rem; font-weight: 400;
+    transition: all .2s;
+    cursor: pointer;
+    border-radius: 2px;
+  }
+  .btn-outline-gold:hover { border-color: var(--caramelo); background: rgba(176,125,58,.08); transform: translateY(-2px); }
+
+  /* ── PROVA SOCIAL ── */
+  #numeros {
+    padding: 4rem 6vw;
+    background: var(--marrom-medio);
+  }
+  .numeros-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    max-width: 900px; margin: 0 auto;
+    text-align: center;
+  }
+  .numero-item {}
+  .numero-valor {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem; font-weight: 500;
+    color: var(--dourado-claro);
+    line-height: 1;
+  }
+  .numero-label {
+    font-size: .75rem; letter-spacing: .08em;
+    color: rgba(232,217,192,.6); text-transform: uppercase;
+    margin-top: .4rem; font-weight: 300;
+  }
 
   /* ── DEPOIMENTOS ── */
   #depoimentos {
-    padding: 7rem 8vw;
+    padding: 6rem 6vw;
     background: var(--bege);
   }
 
   .depo-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
+    gap: 1.5rem;
+    max-width: 1160px; margin: 0 auto;
   }
 
   .depo-card {
     background: var(--branco);
-    padding: 2.5rem;
+    padding: 2.2rem;
     position: relative;
   }
   .depo-card::before {
     content: '\201C';
     font-family: 'Cormorant Garamond', serif;
-    font-size: 6rem;
-    color: var(--caramelo);
-    opacity: .2;
+    font-size: 5.5rem;
+    color: var(--caramelo); opacity: .18;
     position: absolute;
-    top: .5rem; left: 1.5rem;
-    line-height: 1;
+    top: .3rem; left: 1.2rem; line-height: 1;
   }
   .depo-texto {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.05rem; font-style: italic;
-    line-height: 1.75; color: var(--texto);
-    margin-bottom: 1.5rem;
+    line-height: 1.72; color: var(--texto);
+    margin-bottom: 1.4rem;
     position: relative; z-index: 1;
   }
+  .depo-stars { color: var(--caramelo); font-size: .85rem; margin-bottom: .5rem; }
   .depo-autor {
     font-family: 'Cinzel', serif;
-    font-size: .65rem; letter-spacing: .15em;
+    font-size: .62rem; letter-spacing: .14em;
     color: var(--caramelo); text-transform: uppercase;
   }
 
   /* ── CONTATO ── */
   #contato {
-    padding: 7rem 8vw;
+    padding: 6rem 6vw;
     background: var(--creme);
   }
 
@@ -629,66 +767,61 @@
     grid-template-columns: 1fr 1fr;
     gap: 5vw;
     align-items: center;
-    max-width: 1100px;
-    margin: 0 auto;
+    max-width: 1060px; margin: 0 auto;
   }
 
   .contato-info h3 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.8rem; font-weight: 400;
-    color: var(--texto); margin-bottom: 2rem;
+    font-size: 1.7rem; font-weight: 400;
+    color: var(--texto); margin-bottom: 1.8rem;
     line-height: 1.3;
   }
 
   .contato-item {
     display: flex; align-items: flex-start; gap: 14px;
-    margin-bottom: 1.6rem;
+    margin-bottom: 1.4rem;
   }
   .contato-item-icon {
-    width: 40px; height: 40px;
-    background: rgba(201,153,58,.1);
-    border: 1px solid rgba(201,153,58,.3);
+    width: 38px; height: 38px;
+    background: rgba(176,125,58,.08);
+    border: 1px solid rgba(176,125,58,.25);
     display: flex; align-items: center; justify-content: center;
-    font-size: 1.1rem; flex-shrink: 0;
+    font-size: 1rem; flex-shrink: 0;
   }
   .contato-item-text strong {
     font-family: 'Cinzel', serif;
-    font-size: .65rem; letter-spacing: .15em;
+    font-size: .62rem; letter-spacing: .14em;
     color: var(--caramelo); text-transform: uppercase;
-    display: block; margin-bottom: 3px;
+    display: block; margin-bottom: 2px;
   }
-  .contato-item-text span {
-    font-size: .95rem; color: var(--texto-suave);
-    font-weight: 300; line-height: 1.5;
-  }
+  .contato-item-text span { font-size: .92rem; color: var(--texto-suave); font-weight: 300; line-height: 1.5; }
 
   .contato-cta {
     background: var(--branco);
-    border: 1px solid rgba(201,153,58,.3);
-    padding: 3rem;
+    border: 1px solid rgba(176,125,58,.2);
+    padding: 2.8rem;
     text-align: center;
   }
   .contato-cta h4 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem; font-weight: 400;
-    color: var(--texto); margin-bottom: 1rem;
+    font-size: 1.55rem; font-weight: 400;
+    color: var(--texto); margin-bottom: .9rem;
   }
   .contato-cta p {
-    font-size: .9rem; color: var(--texto-suave);
-    line-height: 1.7; margin-bottom: 2rem;
-    font-weight: 300;
+    font-size: .88rem; color: var(--texto-suave);
+    line-height: 1.7; margin-bottom: 1.8rem; font-weight: 300;
   }
 
   .whatsapp-btn {
-    display: inline-flex; align-items: center; gap: 10px;
+    display: inline-flex; align-items: center; gap: 9px;
     background: #25D366; color: var(--branco);
     text-decoration: none;
-    padding: 14px 32px;
-    font-family: 'Cinzel', serif;
-    font-size: .75rem; letter-spacing: .12em;
-    text-transform: uppercase;
+    padding: 14px 28px;
+    font-family: 'Inter', sans-serif;
+    font-size: .88rem; font-weight: 500;
     transition: background .2s, transform .2s;
     width: 100%; justify-content: center;
+    border-radius: 2px;
   }
   .whatsapp-btn:hover { background: #1ebe5d; transform: translateY(-2px); }
 
@@ -696,78 +829,73 @@
   footer {
     background: var(--marrom);
     color: var(--bege);
-    padding: 3rem 8vw;
+    padding: 2.8rem 6vw;
     text-align: center;
   }
   .footer-logo {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem; font-weight: 300;
-    letter-spacing: .1em;
-    color: var(--bege-medio);
-    margin-bottom: .5rem;
+    font-size: 1.45rem; font-weight: 300;
+    letter-spacing: .08em; color: var(--bege-medio);
+    margin-bottom: .4rem;
   }
   .footer-sub {
     font-family: 'Cinzel', serif;
-    font-size: .6rem; letter-spacing: .3em;
+    font-size: .58rem; letter-spacing: .28em;
     color: var(--caramelo); text-transform: uppercase;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.4rem;
   }
-  .footer-line {
-    width: 60px; height: 1px;
-    background: rgba(201,153,58,.3);
-    margin: 1.5rem auto;
-  }
-  .footer-copy {
-    font-size: .78rem; color: rgba(232,217,192,.45);
-    font-weight: 300; letter-spacing: .05em;
-  }
+  .footer-line { width: 50px; height: 1px; background: rgba(176,125,58,.25); margin: 1.4rem auto; }
+  .footer-copy { font-size: .76rem; color: rgba(232,217,192,.38); font-weight: 300; letter-spacing: .04em; line-height: 1.8; }
 
   /* ── WHATSAPP FLOAT ── */
   .whatsapp-float {
-    position: fixed; bottom: 28px; right: 28px; z-index: 200;
-    width: 56px; height: 56px;
-    background: #25D366;
-    border-radius: 50%;
+    position: fixed; bottom: 26px; right: 26px; z-index: 200;
+    width: 54px; height: 54px;
+    background: #25D366; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     text-decoration: none;
-    box-shadow: 0 4px 20px rgba(37,211,102,.4);
+    box-shadow: 0 4px 20px rgba(37,211,102,.38);
     transition: transform .25s, box-shadow .25s;
-    animation: pulse 2.5s infinite;
+    animation: wapulse 2.8s infinite;
   }
-  .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,.55); }
-  .whatsapp-float svg { width: 28px; height: 28px; fill: white; }
+  .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 26px rgba(37,211,102,.52); }
+  .whatsapp-float svg { width: 26px; height: 26px; fill: white; }
 
-  @keyframes pulse {
-    0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,.4), 0 0 0 0 rgba(37,211,102,.3); }
-    50% { box-shadow: 0 4px 20px rgba(37,211,102,.4), 0 0 0 10px rgba(37,211,102,0); }
+  @keyframes wapulse {
+    0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,.38), 0 0 0 0 rgba(37,211,102,.25); }
+    50%       { box-shadow: 0 4px 20px rgba(37,211,102,.38), 0 0 0 10px rgba(37,211,102,0); }
   }
 
   /* ── RESPONSIVE ── */
-  @media (max-width: 900px) {
+  @media (max-width: 960px) {
     #hero { grid-template-columns: 1fr; }
     .hero-right { min-height: 55vw; }
-    .hero-photo-frame::before { display: none; }
-    .hero-photo-frame::after { height: 15%; }
+    .hero-photo-wrap::before { display: none; }
     .sobre-grid { grid-template-columns: 1fr; }
-    .sobre-img-wrap { max-width: 320px; margin: 0 auto; }
+    .sobre-photos { max-width: 380px; margin: 0 auto; }
     .areas-grid { grid-template-columns: 1fr; }
+    .numeros-grid { grid-template-columns: repeat(2, 1fr); }
     .depo-grid { grid-template-columns: 1fr; }
     .contato-grid { grid-template-columns: 1fr; }
     .nav-links { display: none; }
+    .wizard-options.cols-3 { grid-template-columns: repeat(2, 1fr); }
   }
 
-  @media (max-width: 600px) {
-    .hero-left { padding: 4rem 5vw 3rem; }
-    #sobre, #areas, #atendimento, #depoimentos, #contato { padding: 5rem 5vw; }
+  @media (max-width: 580px) {
+    .hero-left { padding: 3.5rem 5vw 2.5rem; }
+    #sobre, #areas, #atendimento, #depoimentos, #contato { padding: 4.5rem 5vw; }
+    .wizard-options { grid-template-columns: 1fr; }
+    .wizard-options.cols-2 { grid-template-columns: 1fr; }
+    .result-row { flex-direction: column; gap: 4px; }
+    .result-row-label { min-width: unset; }
+    .numeros-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+    .urgency-strip { gap: 1rem; }
+    .urgency-divider { display: none; }
   }
 
-  /* ── SCROLL ANIMATIONS ── */
-  .reveal {
-    opacity: 0; transform: translateY(24px);
-    transition: opacity .7s ease, transform .7s ease;
-  }
+  /* ── SCROLL REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity .65s ease, transform .65s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
-
 </style>
 </head>
 <body>
@@ -780,17 +908,15 @@
   </a>
   <ul class="nav-links">
     <li><a href="#sobre">Sobre</a></li>
-    <li><a href="#areas">Áreas</a></li>
-    <li><a href="#atendimento">Seu Caso</a></li>
+    <li><a href="#areas">Especialidades</a></li>
+    <li><a href="#atendimento">Verificar Direito</a></li>
+    <li><a href="#depoimentos">Clientes</a></li>
     <li><a href="#contato" class="nav-cta">Consulta</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-bg-ornament"></div>
-  <div class="hero-lines"></div>
-
   <div class="hero-left">
     <div class="hero-eyebrow">OAB/CE 46.161 · Fortaleza, Ceará</div>
 
@@ -800,41 +926,71 @@
       Advogada
     </h1>
 
-    <p class="hero-slogan">
-      "Direito é proteção.<br>Eu luto pelo seu."
+    <p class="hero-desc">
+      <strong>Descubra se você pode estar deixando de receber um benefício do INSS.</strong> Análise rápida, atendimento humanizado, resultado concreto.
     </p>
 
     <div class="hero-areas">
       <span class="hero-area-tag">INSS</span>
-      <span class="hero-area-tag">Benefícios</span>
+      <span class="hero-area-tag">Previdenciário</span>
       <span class="hero-area-tag">Direito da Saúde</span>
+      <span class="hero-area-tag">Médicos Residentes</span>
     </div>
 
     <div class="hero-btns">
-      <a href="#atendimento" class="btn-primary">Identifique seu caso</a>
-      <a href="https://wa.me/5585991654288" target="_blank" class="btn-secondary">WhatsApp</a>
+      <a href="#atendimento" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        Verificar meu direito agora
+      </a>
+      <a href="https://wa.me/5585991654288" target="_blank" rel="noopener" class="btn-secondary">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Falar no WhatsApp
+      </a>
     </div>
   </div>
 
   <div class="hero-right">
-    <div class="hero-photo-frame">
-      <img src="hero.jpeg" alt="Vandressa Solos do Mar – Advogada">
+    <div class="hero-photo-wrap">
+      <img src="nova1.webp" alt="Vandressa Solos do Mar – Advogada Previdenciária" class="hero-main-img">
     </div>
-    <div class="hero-oab">
-      <span class="hero-oab-text">OAB/CE 46.161</span>
+    <div class="hero-oab-badge">
+      <span>OAB / CE 46.161</span>
     </div>
   </div>
 </section>
+
+<!-- URGENCY STRIP -->
+<div class="urgency-strip">
+  <div class="urgency-item">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B07D3A" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    Prazo para recurso: não perca seu direito
+  </div>
+  <div class="urgency-divider"></div>
+  <div class="urgency-item">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B07D3A" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 13.6a19.79 19.79 0 01-3.07-8.67A2 2 0 012 3h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 10.91A16 16 0 0013.1 17.9l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    Atendimento presencial e online em todo o Brasil
+  </div>
+  <div class="urgency-divider"></div>
+  <div class="urgency-item">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B07D3A" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+    Primeira orientação gratuita via WhatsApp
+  </div>
+</div>
 
 <!-- SOBRE -->
 <section id="sobre">
   <div class="ornament-divider"><div class="ornament-diamond"></div></div>
   <div class="sobre-grid reveal">
-    <div class="sobre-img-wrap">
-      <img src="hero2.jpeg" alt="Vandressa Solos do Mar">
+    <div class="sobre-photos">
+      <div class="sobre-photo-main">
+        <img src="nova2.webp" alt="Vandressa Solos do Mar">
+      </div>
+      <div class="sobre-photo-small">
+        <img src="nova3.webp" alt="Vandressa Solos do Mar">
+      </div>
     </div>
     <div class="sobre-content">
-      <div class="section-header" style="text-align:left; margin-bottom:2rem;">
+      <div class="section-header" style="text-align:left; margin-bottom:1.8rem;">
         <span class="section-eyebrow">Quem sou eu</span>
         <h2 class="section-title">Advogada formada pela<br><em>Universidade Federal do Ceará</em></h2>
       </div>
@@ -842,10 +998,10 @@
         Sou <strong>Vandressa Soares Solos do Mar</strong>, advogada inscrita na OAB/CE sob o nº 46.161, com atuação especializada em Direito Previdenciário e Direito da Saúde. Com sede em Fortaleza, Ceará, atendo clientes em todo o Brasil.
       </p>
       <p>
-        Minha trajetória é marcada pela <strong>advocacia humanizada</strong> — acredito que por trás de cada processo há uma história real, uma família que espera e um direito que merece ser reconhecido. Por isso, acompanho cada caso com atenção, clareza e comprometimento desde a primeira consulta até o resultado final.
+        Minha trajetória é marcada pela <strong>advocacia humanizada</strong> — acredito que por trás de cada processo há uma história real, uma família que espera e um direito que merece ser reconhecido. Acompanho cada caso com atenção e comprometimento do início ao resultado.
       </p>
       <p>
-        Atuo com foco em <strong>benefícios do INSS</strong> (aposentadorias, auxílio-doença, BPC/LOAS, pensão por morte e salário-maternidade), <strong>Auxílio-Moradia para médicos residentes</strong> e <strong>Direito à Saúde</strong> — garantindo acesso a medicamentos, cirurgias e tratamentos negados tanto pelo SUS quanto por planos de saúde.
+        Atuo com foco em <strong>benefícios do INSS</strong> (aposentadorias, auxílio-doença, BPC/LOAS, pensão por morte e salário-maternidade), <strong>Auxílio-Moradia para médicos residentes</strong> e <strong>Direito à Saúde</strong> — garantindo acesso a medicamentos, cirurgias e tratamentos negados pelo SUS ou planos de saúde.
       </p>
       <div class="sobre-credenciais">
         <div class="credencial">
@@ -853,19 +1009,23 @@
           <span class="credencial-label">46.161</span>
         </div>
         <div class="credencial">
-          <span class="credencial-valor">3</span>
+          <span class="credencial-valor">3+</span>
           <span class="credencial-label">Áreas de atuação</span>
         </div>
         <div class="credencial">
           <span class="credencial-valor">100%</span>
           <span class="credencial-label">Dedicação ao cliente</span>
         </div>
+        <div class="credencial">
+          <span class="credencial-valor">UFC</span>
+          <span class="credencial-label">Formação jurídica</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- AREAS -->
+<!-- ÁREAS -->
 <section id="areas">
   <div class="section-header reveal">
     <span class="section-eyebrow">Atuação</span>
@@ -875,7 +1035,7 @@
     <div class="area-card reveal">
       <div class="area-icon">⚖️</div>
       <h3 class="area-title">Benefícios do INSS</h3>
-      <p class="area-desc">Aposentadorias, auxílio-doença, BPC/LOAS, pensão por morte, salário-maternidade. Atuamos na concessão, recurso e restabelecimento de benefícios negados ou cortados.</p>
+      <p class="area-desc">Aposentadorias, auxílio-doença, BPC/LOAS, pensão por morte, salário-maternidade. Concessão, recurso e restabelecimento de benefícios negados ou cortados.</p>
       <a href="#atendimento" class="area-link">Verificar meu caso →</a>
     </div>
     <div class="area-card reveal">
@@ -895,153 +1055,129 @@
 
 <!-- WIZARD DE ATENDIMENTO -->
 <section id="atendimento">
-  <div class="section-header reveal">
-    <span class="section-eyebrow">Autoatendimento</span>
-    <h2 class="section-title" style="color:var(--bege);">Identifique <em>seu caso</em></h2>
+  <div class="wizard-headline reveal">
+    <span class="section-eyebrow">Análise Gratuita</span>
+    <h2 class="section-title" style="color:#F0E4CC;">Descubra se você pode estar<br><em>deixando de receber um benefício do INSS</em> 👇</h2>
+    <p class="wizard-lead">Responda as perguntas abaixo e receba uma análise personalizada em segundos</p>
   </div>
 
   <div class="wizard-container">
-    <!-- Step indicator -->
-    <div class="wizard-steps">
-      <div class="step-dot active" id="step-ind-1">1</div>
-      <div class="step-line" id="step-line-1"></div>
-      <div class="step-dot" id="step-ind-2">2</div>
-      <div class="step-line" id="step-line-2"></div>
-      <div class="step-dot" id="step-ind-3">3</div>
+    <!-- Progress -->
+    <div class="wizard-progress" id="wizard-progress">
+      <div class="step-dot active" id="sdot-1">1</div>
+      <div class="step-line" id="sline-1"></div>
+      <div class="step-dot" id="sdot-2">2</div>
+      <div class="step-line" id="sline-2"></div>
+      <div class="step-dot" id="sdot-3">3</div>
+      <div class="step-line" id="sline-3"></div>
+      <div class="step-dot" id="sdot-4">✓</div>
     </div>
 
-    <!-- Etapa 1 -->
-    <div class="wizard-panel active" id="panel-1">
-      <p class="wizard-question">Qual é a sua necessidade?</p>
+    <!-- PASSO 1: escolha o benefício -->
+    <div class="wizard-panel active" id="wp-start">
+      <p class="wizard-question">Qual é o seu caso?</p>
       <div class="wizard-options">
-        <div class="wizard-option" onclick="selectArea('inss')">
-          <span class="wizard-option-icon">⚖️</span>
-          <span class="wizard-option-text">Benefícios do INSS</span>
-        </div>
-        <div class="wizard-option" onclick="selectArea('medico')">
-          <span class="wizard-option-icon">🏥</span>
-          <span class="wizard-option-text">Auxílio-Moradia para Médicos</span>
-        </div>
-        <div class="wizard-option" onclick="selectArea('saude')">
-          <span class="wizard-option-icon">💊</span>
-          <span class="wizard-option-text">Direito à Saúde (Medicamentos / Tratamentos)</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Etapa 2 – INSS -->
-    <div class="wizard-panel" id="panel-inss">
-      <p class="wizard-question">Selecione o seu caso</p>
-      <div class="wizard-options">
-        <div class="wizard-option" onclick="selectCase('Quero me aposentar')">
-          <span class="wizard-option-icon">🕐</span>
-          <span class="wizard-option-text">Quero me aposentar</span>
-        </div>
-        <div class="wizard-option" onclick="selectCase('Meu benefício foi negado')">
-          <span class="wizard-option-icon">❌</span>
-          <span class="wizard-option-text">Meu benefício foi negado</span>
-        </div>
-        <div class="wizard-option" onclick="selectCase('Meu benefício foi cortado ou suspenso')">
-          <span class="wizard-option-icon">✂️</span>
-          <span class="wizard-option-text">Meu benefício foi cortado/suspenso</span>
-        </div>
-        <div class="wizard-option" onclick="selectCase('Preciso de auxílio-doença')">
-          <span class="wizard-option-icon">🏨</span>
-          <span class="wizard-option-text">Preciso de auxílio-doença</span>
-        </div>
-        <div class="wizard-option" onclick="selectCase('Solicitar BPC/LOAS')">
-          <span class="wizard-option-icon">🤝</span>
-          <span class="wizard-option-text">Solicitar BPC/LOAS</span>
-        </div>
-        <div class="wizard-option" onclick="selectCase('Pensão por morte')">
-          <span class="wizard-option-icon">🕯️</span>
-          <span class="wizard-option-text">Pensão por morte</span>
-        </div>
-        <div class="wizard-option" onclick="selectCase('Salário-maternidade')">
+        <div class="wizard-option" onclick="W.chooseArea('maternidade')">
           <span class="wizard-option-icon">👶</span>
-          <span class="wizard-option-text">Salário-maternidade</span>
+          <span class="wizard-option-text">Salário-Maternidade</span>
         </div>
-      </div>
-      <div class="wizard-back" style="display:block">
-        <button onclick="goBack(1)">← Voltar</button>
-      </div>
-    </div>
-
-    <!-- Etapa 2 – MÉDICO -->
-    <div class="wizard-panel" id="panel-medico">
-      <p class="wizard-question">Qual é a sua situação?</p>
-      <div class="wizard-options">
-        <div class="wizard-option" onclick="selectCase('Quero saber se tenho direito ao auxílio-moradia')">
-          <span class="wizard-option-icon">🔍</span>
-          <span class="wizard-option-text">Quero saber se tenho direito ao auxílio</span>
+        <div class="wizard-option" onclick="W.chooseArea('auxdoenca')">
+          <span class="wizard-option-icon">🏨</span>
+          <span class="wizard-option-text">Auxílio-Doença</span>
         </div>
-        <div class="wizard-option" onclick="selectCase('Já finalizei a residência e quero entrar com ação para o auxílio-moradia')">
-          <span class="wizard-option-icon">⚖️</span>
-          <span class="wizard-option-text">Já finalizei a residência e quero entrar com ação</span>
+        <div class="wizard-option" onclick="W.chooseArea('aposentadoria')">
+          <span class="wizard-option-icon">🕐</span>
+          <span class="wizard-option-text">Aposentadoria</span>
         </div>
-      </div>
-      <div class="wizard-back" style="display:block">
-        <button onclick="goBack(1)">← Voltar</button>
-      </div>
-    </div>
-
-    <!-- Etapa 2 – SAÚDE -->
-    <div class="wizard-panel" id="panel-saude">
-      <p class="wizard-question">Qual é a sua situação?</p>
-      <div class="wizard-options">
-        <div class="wizard-option" onclick="selectCase('Direito à internação em UTI')">
-          <span class="wizard-option-icon">🏥</span>
-          <span class="wizard-option-text">Direito à Internação em UTI</span>
+        <div class="wizard-option" onclick="W.chooseArea('negado')">
+          <span class="wizard-option-icon">❌</span>
+          <span class="wizard-option-text">Benefício Negado</span>
         </div>
-        <div class="wizard-option" onclick="selectCase('Pedido de transferência hospitalar')">
-          <span class="wizard-option-icon">🚑</span>
-          <span class="wizard-option-text">Pedido de transferência hospitalar</span>
+        <div class="wizard-option" onclick="W.chooseArea('cortado')">
+          <span class="wizard-option-icon">✂️</span>
+          <span class="wizard-option-text">Benefício Cortado</span>
         </div>
-        <div class="wizard-option" onclick="selectCase('Preciso de medicamento de alto custo')">
+        <div class="wizard-option" onclick="W.chooseArea('bpcloas')">
+          <span class="wizard-option-icon">🤝</span>
+          <span class="wizard-option-text">BPC / LOAS</span>
+        </div>
+        <div class="wizard-option" onclick="W.chooseArea('pensao')">
+          <span class="wizard-option-icon">🕯️</span>
+          <span class="wizard-option-text">Pensão por Morte</span>
+        </div>
+        <div class="wizard-option" onclick="W.chooseArea('medico')">
+          <span class="wizard-option-icon">👨‍⚕️</span>
+          <span class="wizard-option-text">Auxílio-Moradia (Médico Residente)</span>
+        </div>
+        <div class="wizard-option" onclick="W.chooseArea('saude')">
           <span class="wizard-option-icon">💊</span>
-          <span class="wizard-option-text">Preciso de medicamento de alto custo</span>
-        </div>
-        <div class="wizard-option" onclick="selectCase('Meu tratamento foi negado')">
-          <span class="wizard-option-icon">🚫</span>
-          <span class="wizard-option-text">Meu tratamento foi negado</span>
-        </div>
-        <div class="wizard-option" onclick="selectCase('Preciso de cirurgia urgente')">
-          <span class="wizard-option-icon">🔬</span>
-          <span class="wizard-option-text">Preciso de cirurgia urgente</span>
-        </div>
-        <div class="wizard-option" onclick="selectCase('Plano de saúde negou cobertura')">
-          <span class="wizard-option-icon">📋</span>
-          <span class="wizard-option-text">Plano de saúde negou cobertura</span>
-        </div>
-        <div class="wizard-option" onclick="selectCase('SUS não forneceu o tratamento')">
-          <span class="wizard-option-icon">🏛️</span>
-          <span class="wizard-option-text">SUS não forneceu o tratamento</span>
-        </div>
-      </div>
-      <div class="wizard-back" style="display:block">
-        <button onclick="goBack(1)">← Voltar</button>
-      </div>
-    </div>
-
-    <!-- Etapa 3 – Final -->
-    <div class="wizard-panel" id="panel-final">
-      <div class="wizard-final">
-        <div class="wizard-final-title">✅ Identificamos seu caso!</div>
-        <p class="wizard-final-text" id="final-text">
-          Seu caso: <strong id="final-case"></strong><br><br>
-          Entre em contato pelo WhatsApp para uma consulta personalizada. Vandressa irá analisar sua situação e orientar sobre os próximos passos.
-        </p>
-        <a id="final-whatsapp" href="#" target="_blank" class="wizard-final-btn">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Falar com Vandressa agora
-        </a>
-        <br>
-        <div class="wizard-back" style="display:block; margin-top:1rem;">
-          <button onclick="goBack(2)">← Voltar ao início</button>
+          <span class="wizard-option-text">Direito à Saúde (Tratamento / Medicamento)</span>
         </div>
       </div>
     </div>
 
+    <!-- PASSO 2: sub-perguntas (renderizadas dinamicamente) -->
+    <div class="wizard-panel" id="wp-step2">
+      <p class="wizard-question" id="wp-step2-q"></p>
+      <div id="wp-step2-body"></div>
+      <div class="wizard-nav">
+        <button class="wizard-btn-back" onclick="W.goBack()">← Voltar</button>
+        <button class="wizard-btn-next" id="wp-step2-next" onclick="W.nextStep()" disabled>Continuar →</button>
+      </div>
+    </div>
+
+    <!-- PASSO 3: perguntas de detalhe -->
+    <div class="wizard-panel" id="wp-step3">
+      <p class="wizard-question" id="wp-step3-q"></p>
+      <div id="wp-step3-body"></div>
+      <div class="wizard-nav">
+        <button class="wizard-btn-back" onclick="W.goBack()">← Voltar</button>
+        <button class="wizard-btn-next" id="wp-step3-next" onclick="W.nextStep()" disabled>Ver resultado →</button>
+      </div>
+    </div>
+
+    <!-- PASSO 4: resultado -->
+    <div class="wizard-panel" id="wp-result">
+      <div class="wizard-result">
+        <div class="result-badge">✅ Análise Concluída</div>
+        <h3 class="result-title" id="result-title">Identificamos o seu caso!</h3>
+
+        <div class="result-card" id="result-card"></div>
+
+        <p class="result-disclaimer">⚠️ Esta análise é indicativa e não substitui a orientação jurídica individualizada. Cada caso possui particularidades que exigem análise com especialista.</p>
+
+        <div class="result-btns">
+          <a id="result-wa-btn" href="#" target="_blank" rel="noopener" class="btn-whatsapp-green">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Analisar meu caso com especialista
+          </a>
+          <button class="btn-outline-gold" onclick="W.restart()">← Recomeçar análise</button>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /wizard-container -->
+</section>
+
+<!-- NÚMEROS -->
+<section id="numeros">
+  <div class="numeros-grid reveal">
+    <div class="numero-item">
+      <div class="numero-valor">100%</div>
+      <div class="numero-label">Dedicação a cada caso</div>
+    </div>
+    <div class="numero-item">
+      <div class="numero-valor">Brasil</div>
+      <div class="numero-label">Atendimento online nacional</div>
+    </div>
+    <div class="numero-item">
+      <div class="numero-valor">UFC</div>
+      <div class="numero-label">Formação federal</div>
+    </div>
+    <div class="numero-item">
+      <div class="numero-valor">OAB/CE</div>
+      <div class="numero-label">Regularmente inscrita</div>
+    </div>
   </div>
 </section>
 
@@ -1053,16 +1189,19 @@
   </div>
   <div class="depo-grid">
     <div class="depo-card reveal">
+      <div class="depo-stars">★★★★★</div>
       <p class="depo-texto">Tive minha aposentadoria por invalidez negada duas vezes. A Dra. Vandressa entrou com recurso e conseguimos o benefício em poucos meses. Profissional incrível, muito humana e atenciosa.</p>
       <span class="depo-autor">Maria S. — Fortaleza, CE</span>
     </div>
     <div class="depo-card reveal">
+      <div class="depo-stars">★★★★★</div>
       <p class="depo-texto">Ela lutou pelo meu direito quando o plano de saúde negou a cirurgia da minha filha. Em menos de 48h tínhamos a liminar. Sou eternamente grata pela dedicação e competência.</p>
       <span class="depo-autor">Ana R. — Fortaleza, CE</span>
     </div>
     <div class="depo-card reveal">
+      <div class="depo-stars">★★★★★</div>
       <p class="depo-texto">Descobri com ela que tinha direito ao auxílio-moradia da residência médica. Valor que não sabia que existia. Atenção impecável e explicação clara durante todo o processo.</p>
-      <span class="depo-autor">Dr. Felipe M. — Residente</span>
+      <span class="depo-autor">Dr. Felipe M. — Médico Residente</span>
     </div>
   </div>
 </section>
@@ -1082,10 +1221,9 @@
         <div class="contato-item-icon">📍</div>
         <div class="contato-item-text">
           <strong>Localização</strong>
-          <span>Fortaleza, Ceará<br>Atendimento presencial e online</span>
+          <span>Fortaleza, Ceará<br>Atendimento presencial e online em todo o Brasil</span>
         </div>
       </div>
-
       <div class="contato-item">
         <div class="contato-item-icon">📱</div>
         <div class="contato-item-text">
@@ -1093,7 +1231,6 @@
           <span>(85) 99165-4288</span>
         </div>
       </div>
-
       <div class="contato-item">
         <div class="contato-item-icon">📋</div>
         <div class="contato-item-text">
@@ -1101,7 +1238,6 @@
           <span>OAB/CE 46.161</span>
         </div>
       </div>
-
       <div class="contato-item">
         <div class="contato-item-icon">📸</div>
         <div class="contato-item-text">
@@ -1112,11 +1248,11 @@
     </div>
 
     <div class="contato-cta reveal">
-      <h4>Primeira consulta<br>personalizada</h4>
-      <p>Descreva sua situação brevemente pelo WhatsApp e receba uma orientação inicial. Cada caso é analisado com atenção e sigilo.</p>
-      <a href="https://wa.me/5585991654288?text=Ol%C3%A1%2C%20Dra.%20Vandressa!%20Gostaria%20de%20uma%20consulta%20sobre%20meu%20caso." target="_blank" class="whatsapp-btn">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Enviar mensagem agora
+      <h4>Primeira orientação<br>gratuita pelo WhatsApp</h4>
+      <p>Descreva sua situação brevemente e receba uma orientação inicial. Cada caso é analisado com atenção e sigilo absoluto.</p>
+      <a href="https://wa.me/5585991654288?text=Ol%C3%A1%2C%20Dra.%20Vandressa!%20Vim%20pelo%20site%20e%20gostaria%20de%20uma%20orienta%C3%A7%C3%A3o%20sobre%20meu%20caso." target="_blank" rel="noopener" class="whatsapp-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Quero saber se tenho direito (WhatsApp)
       </a>
     </div>
   </div>
@@ -1127,83 +1263,648 @@
   <div class="footer-logo">Vandressa Solos do Mar</div>
   <div class="footer-sub">Advogada · OAB/CE 46.161</div>
   <div class="footer-line"></div>
-  <p class="footer-copy">INSS · Benefícios · Direito da Saúde · Fortaleza, Ceará<br>
-  © 2026 Vandressa Solos do Mar Advocacia. Todos os direitos reservados.</p>
+  <p class="footer-copy">
+    Direito Previdenciário · INSS · Benefícios · Direito da Saúde · Fortaleza, Ceará<br>
+    © 2026 Vandressa Solos do Mar Advocacia. Todos os direitos reservados.<br>
+    <small style="opacity:.6">As informações deste site têm caráter informativo e não constituem consultoria jurídica.</small>
+  </p>
 </footer>
 
 <!-- WhatsApp Flutuante -->
-<a href="https://wa.me/5585991654288" target="_blank" class="whatsapp-float" title="Falar no WhatsApp">
+<a href="https://wa.me/5585991654288" target="_blank" rel="noopener" class="whatsapp-float" title="Falar no WhatsApp">
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
   </svg>
 </a>
 
 <script>
-  // NAV scroll effect
-  window.addEventListener('scroll', () => {
-    document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 40);
+/* ─── NAV ─── */
+window.addEventListener('scroll', () => {
+  document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+/* ─── SCROLL REVEAL ─── */
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80);
   });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(r => revealObs.observe(r));
 
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 100);
+/* ─── WIZARD ENGINE ─── */
+const WA = '5585991654288';
+
+// Flow definitions per area
+const FLOWS = {
+  maternidade: {
+    label: 'Salário-Maternidade',
+    step2: {
+      q: 'Me conta qual é a sua situação:',
+      type: 'options',
+      key: 'situacao',
+      opts: [
+        { icon: '❌', t: 'Não tenho nenhuma contribuição ao INSS' },
+        { icon: '🏢', t: 'Contribuo por conta própria (MEI / autônoma)' },
+        { icon: '💼', t: 'Sou CLT e quero 2º salário-maternidade' },
+        { icon: '📋', t: 'Estou desempregada' },
+        { icon: '🏥', t: 'Quero prorrogar por internação da mãe ou do bebê' },
+        { icon: '🚫', t: 'Meu pedido foi negado' },
+      ]
+    },
+    step3: {
+      q: 'Você já teve o bebê ou ainda está grávida?',
+      type: 'options',
+      key: 'momento',
+      opts: [
+        { icon: '👶', t: 'Já tive o bebê' },
+        { icon: '🤰', t: 'Ainda estou grávida' },
+      ],
+      followup: {
+        'Já tive o bebê': { q: 'Qual foi a data aproximada do parto?', type: 'date', key: 'data_parto' },
+        'Ainda estou grávida': { q: 'Qual é a previsão do parto?', type: 'date', key: 'previsao_parto' },
       }
+    },
+    result: (s) => {
+      const t = s.situacao || '';
+      if (t.includes('negado')) return { d: 'SIM', cls: 'sim', rec: 'Você pode ter direito a entrar com recurso administrativo ou ação judicial. O prazo é importante — não espere.' };
+      if (t.includes('desempregada')) return { d: 'POSSÍVEL', cls: 'possivel', rec: 'Seguradas desempregadas podem ter direito ao salário-maternidade se mantiveram a qualidade de segurada. Análise necessária.' };
+      if (t.includes('Não tenho')) return { d: 'REQUER ANÁLISE', cls: 'requer', rec: 'Sem contribuições, o direito é restrito. Mas há casos em que é possível regularizar a situação retroativamente.' };
+      return { d: 'POSSÍVEL', cls: 'possivel', rec: 'Com base nas suas respostas, você pode ter direito ao salário-maternidade. Uma análise especializada confirmará.' };
+    }
+  },
+  auxdoenca: {
+    label: 'Auxílio-Doença',
+    step2: {
+      q: 'Qual dessas situações descreve melhor o seu caso?',
+      type: 'options',
+      key: 'situacao',
+      opts: [
+        { icon: '🏠', t: 'Estou afastado do trabalho' },
+        { icon: '📄', t: 'Tenho vários atestados mas o INSS não reconheceu' },
+        { icon: '❌', t: 'Meu pedido foi negado' },
+        { icon: '✂️', t: 'Meu benefício foi cortado' },
+        { icon: '⏳', t: 'Aguardando perícia médica' },
+        { icon: '⚕️', t: 'Tenho doença grave ou crônica' },
+        { icon: '🤕', t: 'Acidente de trabalho ou doméstico' },
+      ]
+    },
+    step3: {
+      q: 'Mais algumas informações:',
+      type: 'multi',
+      items: [
+        { q: 'Há quanto tempo você está incapacitado?', type: 'options', key: 'tempo_incap', opts: [
+          { icon: '📅', t: 'Menos de 30 dias' },
+          { icon: '📅', t: '1 a 3 meses' },
+          { icon: '📅', t: '3 a 6 meses' },
+          { icon: '📅', t: 'Mais de 6 meses' },
+        ]},
+        { q: 'Você possui laudos ou exames?', type: 'options', key: 'laudos', opts: [
+          { icon: '✅', t: 'Sim, tenho laudos e exames' },
+          { icon: '📋', t: 'Tenho apenas atestados' },
+          { icon: '❌', t: 'Ainda não tenho documentação' },
+        ]},
+        { q: 'Você trabalha como…', type: 'options', key: 'vinculo', opts: [
+          { icon: '💼', t: 'CLT (carteira assinada)' },
+          { icon: '🏢', t: 'Autônomo / MEI' },
+          { icon: '🏠', t: 'Desempregado' },
+        ]},
+      ]
+    },
+    result: (s) => {
+      const t = s.situacao || '';
+      if (t.includes('negado') || t.includes('cortado')) return { d: 'SIM', cls: 'sim', rec: 'Benefício negado ou cortado pode ser questionado via recurso ou ação judicial. Procure atendimento imediatamente.' };
+      if (t.includes('Aguardando')) return { d: 'POSSÍVEL', cls: 'possivel', rec: 'Enquanto aguarda a perícia, é possível antecipar orientação jurídica para fortalecer seu caso.' };
+      return { d: 'POSSÍVEL', cls: 'possivel', rec: 'Com base nas suas respostas, você pode ter direito ao auxílio-doença. Uma análise confirmará os requisitos.' };
+    }
+  },
+  aposentadoria: {
+    label: 'Aposentadoria',
+    step2: {
+      q: 'Qual é a sua situação em relação à aposentadoria?',
+      type: 'options',
+      key: 'situacao',
+      opts: [
+        { icon: '🎯', t: 'Quero me aposentar agora' },
+        { icon: '📊', t: 'Quero saber quanto tempo falta' },
+        { icon: '🎂', t: 'Já tenho a idade mínima' },
+        { icon: '⚗️', t: 'Trabalhei em atividade insalubre' },
+        { icon: '🌾', t: 'Tenho tempo de atividade rural' },
+        { icon: '❌', t: 'Meu pedido foi negado' },
+      ]
+    },
+    step3: {
+      q: 'Últimas informações para a análise:',
+      type: 'multi',
+      items: [
+        { q: 'Qual é a sua idade?', type: 'options', key: 'idade', opts: [
+          { icon: '👤', t: 'Menos de 50 anos' },
+          { icon: '👤', t: '50 a 59 anos' },
+          { icon: '👤', t: '60 a 64 anos' },
+          { icon: '👤', t: '65 anos ou mais' },
+        ]},
+        { q: 'Seu tempo de contribuição ao INSS:', type: 'options', key: 'contrib', opts: [
+          { icon: '📅', t: 'Menos de 15 anos' },
+          { icon: '📅', t: '15 a 25 anos' },
+          { icon: '📅', t: '25 a 35 anos' },
+          { icon: '📅', t: 'Mais de 35 anos' },
+          { icon: '❓', t: 'Não sei exatamente' },
+        ]},
+        { q: 'Já trabalhou com carteira assinada?', type: 'options', key: 'clt', opts: [
+          { icon: '✅', t: 'Sim' },
+          { icon: '❌', t: 'Não, sempre autônomo' },
+          { icon: '🔄', t: 'Misto (CLT e autônomo)' },
+        ]},
+      ]
+    },
+    result: (s) => {
+      const t = s.situacao || '';
+      if (t.includes('negado')) return { d: 'SIM', cls: 'sim', rec: 'Aposentadoria negada pode ser recorrida. Muitas negativas têm erro no cálculo de tempo ou enquadramento de atividade.' };
+      if (t.includes('insalubre') || t.includes('rural')) return { d: 'POSSÍVEL', cls: 'possivel', rec: 'Atividade especial (insalubridade) e tempo rural exigem análise documental detalhada. Você pode ter direito a aposentadoria mais cedo.' };
+      return { d: 'POSSÍVEL', cls: 'possivel', rec: 'Com base nas suas respostas, uma análise completa das contribuições pode revelar o melhor momento e modalidade para sua aposentadoria.' };
+    }
+  },
+  negado: {
+    label: 'Benefício Negado',
+    step2: {
+      q: 'Qual benefício foi negado pelo INSS?',
+      type: 'options',
+      key: 'beneficio',
+      opts: [
+        { icon: '🕐', t: 'Aposentadoria' },
+        { icon: '🏨', t: 'Auxílio-Doença' },
+        { icon: '👶', t: 'Salário-Maternidade' },
+        { icon: '🤝', t: 'BPC / LOAS' },
+        { icon: '🕯️', t: 'Pensão por Morte' },
+        { icon: '🤕', t: 'Auxílio-Acidente' },
+      ]
+    },
+    step3: {
+      q: 'Mais detalhes sobre a negativa:',
+      type: 'multi',
+      items: [
+        { q: 'Quando você recebeu a carta de negativa?', type: 'options', key: 'data_negativa', opts: [
+          { icon: '📅', t: 'Menos de 30 dias atrás' },
+          { icon: '📅', t: '1 a 3 meses atrás' },
+          { icon: '📅', t: '3 a 6 meses atrás' },
+          { icon: '📅', t: 'Há mais de 6 meses' },
+        ]},
+        { q: 'Você tem a carta de indeferimento do INSS?', type: 'options', key: 'carta', opts: [
+          { icon: '✅', t: 'Sim, tenho a carta' },
+          { icon: '❌', t: 'Não tenho a carta' },
+          { icon: '🔍', t: 'Não sei onde está' },
+        ]},
+        { q: 'Você já entrou com recurso?', type: 'options', key: 'recurso', opts: [
+          { icon: '❌', t: 'Não entrei ainda' },
+          { icon: '✅', t: 'Já entrei com recurso' },
+          { icon: '❌', t: 'Recurso também foi negado' },
+        ]},
+      ]
+    },
+    result: (s) => {
+      const recurso = s.recurso || '';
+      if (recurso.includes('também foi negado')) return { d: 'SIM', cls: 'sim', rec: 'Após negativa de recurso administrativo, o próximo passo é a ação judicial. Há prazo legal — consulte uma advogada urgentemente.' };
+      if (recurso.includes('Não entrei')) return { d: 'SIM', cls: 'sim', rec: 'Você ainda pode entrar com recurso administrativo ou ação judicial. O prazo para recurso é de 30 dias após a negativa. Não espere.' };
+      return { d: 'SIM', cls: 'sim', rec: 'Benefício negado pode ser questionado. Uma advogada especialista avaliará os fundamentos da negativa e indicará o melhor caminho.' };
+    }
+  },
+  cortado: {
+    label: 'Benefício Cortado',
+    step2: {
+      q: 'Você sabe o motivo do corte do seu benefício?',
+      type: 'options',
+      key: 'motivo',
+      opts: [
+        { icon: '🔍', t: 'Recebi carta dizendo que a incapacidade cessou' },
+        { icon: '📋', t: 'Não fui à perícia ou faltei a convocação' },
+        { icon: '💰', t: 'Informaram que superei o limite de renda (BPC)' },
+        { icon: '📄', t: 'Documentação inadequada ou desatualizada' },
+        { icon: '❓', t: 'Não recebi explicação' },
+        { icon: '🔄', t: 'Outro motivo' },
+      ]
+    },
+    step3: {
+      q: 'Últimas perguntas:',
+      type: 'multi',
+      items: [
+        { q: 'Há quanto tempo você recebia este benefício?', type: 'options', key: 'tempo_recebendo', opts: [
+          { icon: '📅', t: 'Menos de 1 ano' },
+          { icon: '📅', t: '1 a 3 anos' },
+          { icon: '📅', t: '3 a 5 anos' },
+          { icon: '📅', t: 'Mais de 5 anos' },
+        ]},
+        { q: 'Quando o benefício foi cortado?', type: 'options', key: 'data_corte', opts: [
+          { icon: '📅', t: 'Há menos de 30 dias' },
+          { icon: '📅', t: '1 a 3 meses atrás' },
+          { icon: '📅', t: '3 a 6 meses atrás' },
+          { icon: '📅', t: 'Há mais de 6 meses' },
+        ]},
+      ]
+    },
+    result: (s) => {
+      return { d: 'SIM', cls: 'sim', rec: 'O corte indevido de benefício pode ser revertido por recurso administrativo ou ação judicial. Quanto mais rápido agir, melhor. Há direito a pagamento retroativo.' };
+    }
+  },
+  bpcloas: {
+    label: 'BPC / LOAS',
+    step2: {
+      q: 'O BPC/LOAS é para qual pessoa?',
+      type: 'options',
+      key: 'perfil',
+      opts: [
+        { icon: '👴', t: 'Idoso com 65 anos ou mais' },
+        { icon: '♿', t: 'Pessoa com Deficiência (PCD)' },
+      ]
+    },
+    step3: {
+      q: 'Nos ajude a avaliar sua elegibilidade:',
+      type: 'multi',
+      items: [
+        { q: 'Quantas pessoas moram na mesma casa?', type: 'options', key: 'pessoas_casa', opts: [
+          { icon: '🏠', t: '1 pessoa (mora sozinho)' },
+          { icon: '🏠', t: '2 pessoas' },
+          { icon: '🏠', t: '3 a 4 pessoas' },
+          { icon: '🏠', t: '5 ou mais pessoas' },
+        ]},
+        { q: 'Qual é a renda mensal total da família?', type: 'options', key: 'renda', opts: [
+          { icon: '💰', t: 'Sem renda fixa' },
+          { icon: '💰', t: 'Até meio salário mínimo por pessoa' },
+          { icon: '💰', t: '1 salário mínimo por pessoa' },
+          { icon: '💰', t: 'Mais de 1 salário mínimo por pessoa' },
+        ]},
+        { q: 'A família recebe Bolsa Família?', type: 'options', key: 'bolsa', opts: [
+          { icon: '✅', t: 'Sim' },
+          { icon: '❌', t: 'Não' },
+        ]},
+      ]
+    },
+    result: (s) => {
+      const renda = s.renda || '';
+      if (renda.includes('Sem renda') || renda.includes('meio salário')) return { d: 'SIM', cls: 'sim', rec: 'Renda familiar baixa é um forte indicativo de elegibilidade ao BPC/LOAS. Você muito provavelmente tem direito.' };
+      if (renda.includes('1 salário')) return { d: 'POSSÍVEL', cls: 'possivel', rec: 'Dependendo da composição familiar e outros critérios, pode haver elegibilidade. Análise detalhada é recomendada.' };
+      return { d: 'REQUER ANÁLISE', cls: 'requer', rec: 'A renda informada pode estar acima do limite padrão, mas há exceções e critérios adicionais que podem garantir o benefício.' };
+    }
+  },
+  pensao: {
+    label: 'Pensão por Morte',
+    step2: {
+      q: 'Qual é a sua relação com a pessoa falecida?',
+      type: 'options',
+      key: 'relacao',
+      opts: [
+        { icon: '💍', t: 'Cônjuge (casado/a)' },
+        { icon: '🤝', t: 'Companheiro/a (união estável)' },
+        { icon: '👧', t: 'Filho/a menor de 21 anos' },
+        { icon: '👴', t: 'Pai ou mãe (dependente)' },
+        { icon: '👥', t: 'Outro dependente econômico' },
+      ]
+    },
+    step3: {
+      q: 'Mais detalhes:',
+      type: 'multi',
+      items: [
+        { q: 'Quando ocorreu o falecimento?', type: 'options', key: 'data_falec', opts: [
+          { icon: '📅', t: 'Há menos de 1 mês' },
+          { icon: '📅', t: '1 a 6 meses atrás' },
+          { icon: '📅', t: '6 meses a 1 ano' },
+          { icon: '📅', t: 'Há mais de 1 ano' },
+        ]},
+        { q: 'O falecido contribuía para o INSS?', type: 'options', key: 'contribuia', opts: [
+          { icon: '✅', t: 'Sim, era empregado formal (CLT)' },
+          { icon: '✅', t: 'Sim, contribuía como autônomo / MEI' },
+          { icon: '✅', t: 'Sim, estava aposentado ou recebia benefício' },
+          { icon: '❓', t: 'Não tenho certeza' },
+          { icon: '❌', t: 'Acredito que não contribuía' },
+        ]},
+      ]
+    },
+    result: (s) => {
+      const contrib = s.contribuia || '';
+      if (contrib.includes('Sim')) return { d: 'SIM', cls: 'sim', rec: 'Se o falecido era segurado do INSS, você muito provavelmente tem direito à pensão por morte. Aja rápido — há perda de parcelas retroativas a depender do prazo.' };
+      if (contrib.includes('Não tenho certeza')) return { d: 'POSSÍVEL', cls: 'possivel', rec: 'É possível verificar a qualidade de segurado do falecido junto ao INSS. Podemos fazer isso por você.' };
+      return { d: 'REQUER ANÁLISE', cls: 'requer', rec: 'Mesmo sem contribuições recentes, há casos em que o falecido mantinha a qualidade de segurado. Vale verificar antes de desistir.' };
+    }
+  },
+  medico: {
+    label: 'Auxílio-Moradia (Médico Residente)',
+    step2: {
+      q: 'Qual é a sua situação na residência médica?',
+      type: 'options',
+      key: 'situacao',
+      opts: [
+        { icon: '🔍', t: 'Quero saber se tenho direito ao auxílio-moradia' },
+        { icon: '📋', t: 'Estou em residência ativa e quero solicitar' },
+        { icon: '⚖️', t: 'Já finalizei a residência e quero ação retroativa' },
+        { icon: '❌', t: 'Meu pedido de auxílio foi negado pela instituição' },
+      ]
+    },
+    step3: {
+      q: 'Mais informações:',
+      type: 'multi',
+      items: [
+        { q: 'Em qual instituição você faz/fez residência?', type: 'text', key: 'instituicao', placeholder: 'Ex: Hospital Geral de Fortaleza, UFC...' },
+        { q: 'Qual é a sua especialidade?', type: 'text', key: 'especialidade', placeholder: 'Ex: Clínica Médica, Pediatria, Cirurgia...' },
+      ]
+    },
+    result: (s) => {
+      return { d: 'POSSÍVEL', cls: 'possivel', rec: 'Médicos residentes têm direito ao auxílio-moradia garantido por lei (Lei 12.514/2011). O direito existe tanto durante quanto após a residência. Vale a análise.' };
+    }
+  },
+  saude: {
+    label: 'Direito à Saúde',
+    step2: {
+      q: 'Qual é a sua necessidade de saúde?',
+      type: 'options',
+      key: 'situacao',
+      opts: [
+        { icon: '🏥', t: 'Internação em UTI negada' },
+        { icon: '🚑', t: 'Transferência hospitalar negada' },
+        { icon: '💊', t: 'Medicamento de alto custo negado' },
+        { icon: '🚫', t: 'Tratamento negado pelo plano de saúde' },
+        { icon: '🔬', t: 'Cirurgia urgente negada' },
+        { icon: '🏛️', t: 'SUS não forneceu o tratamento' },
+      ]
+    },
+    step3: {
+      q: 'Sobre o seu caso:',
+      type: 'multi',
+      items: [
+        { q: 'Quem negou o tratamento?', type: 'options', key: 'quem_negou', opts: [
+          { icon: '🏛️', t: 'Plano de saúde privado' },
+          { icon: '🏥', t: 'SUS / hospital público' },
+          { icon: '🔄', t: 'Ambos' },
+        ]},
+        { q: 'O caso é urgente?', type: 'options', key: 'urgencia', opts: [
+          { icon: '🚨', t: 'Sim, é urgente / emergência' },
+          { icon: '⏱️', t: 'Sim, mas pode esperar dias' },
+          { icon: '📅', t: 'Não, é tratamento contínuo' },
+        ]},
+      ]
+    },
+    result: (s) => {
+      const urg = s.urgencia || '';
+      if (urg.includes('urgente / emergência')) return { d: 'SIM', cls: 'sim', rec: 'Casos urgentes permitem liminares em menos de 24h. Contacte uma advogada imediatamente — cada hora pode fazer diferença.' };
+      return { d: 'SIM', cls: 'sim', rec: 'Plano de saúde e SUS têm obrigação legal de fornecer tratamentos. Ação judicial pode garantir o atendimento rapidamente.' };
+    }
+  }
+};
+
+/* ─── State ─── */
+const W = {
+  area: null,
+  state: {},
+  currentStep: 1, // 1=start, 2=step2, 3=step3, 4=result
+  step2Pending: null,
+  step3Items: [],
+  step3CurrentIdx: 0,
+
+  chooseArea(area) {
+    this.area = area;
+    this.state = {};
+    this.step3Items = [];
+    this.step3CurrentIdx = 0;
+    this.currentStep = 2;
+    this._renderStep2();
+    this._showPanel('wp-step2');
+    this._setProgress(2);
+  },
+
+  _renderStep2() {
+    const flow = FLOWS[this.area];
+    const s2 = flow.step2;
+    document.getElementById('wp-step2-q').textContent = s2.q;
+    const body = document.getElementById('wp-step2-body');
+    body.innerHTML = this._renderOptions(s2.opts, 'step2');
+    document.getElementById('wp-step2-next').disabled = true;
+  },
+
+  _renderOptions(opts, stepId) {
+    const cols = opts.length <= 2 ? 'cols-2' : opts.length === 3 ? 'cols-3' : '';
+    return `<div class="wizard-options ${cols}">${opts.map(o =>
+      `<div class="wizard-option" onclick="W._selectOpt(this,'${stepId}','${o.t.replace(/'/g,"\\'")}')">
+        <span class="wizard-option-icon">${o.icon}</span>
+        <span class="wizard-option-text">${o.t}</span>
+      </div>`
+    ).join('')}</div>`;
+  },
+
+  _selectOpt(el, stepId, val) {
+    el.closest('.wizard-options').querySelectorAll('.wizard-option').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    const flow = FLOWS[this.area];
+    if (stepId === 'step2') {
+      const s2 = flow.step2;
+      this.state[s2.key] = val;
+      document.getElementById('wp-step2-next').disabled = false;
+
+      // Check if step3 has followup that depends on step2 selection
+      const s3 = flow.step3;
+      if (s3 && s3.type === 'options' && s3.followup && s3.followup[val]) {
+        this.step2Pending = val;
+      }
+    }
+  },
+
+  nextStep() {
+    const flow = FLOWS[this.area];
+    if (this.currentStep === 2) {
+      const s3 = flow.step3;
+      if (!s3) {
+        this._buildResult();
+        this._showPanel('wp-result');
+        this._setProgress(4);
+        return;
+      }
+
+      if (s3.type === 'options') {
+        // Single options question in step3
+        document.getElementById('wp-step3-q').textContent = s3.q;
+        const body = document.getElementById('wp-step3-body');
+        body.innerHTML = this._renderOptions(s3.opts, 'step3main');
+        document.getElementById('wp-step3-next').disabled = true;
+        this._showPanel('wp-step3');
+        this._setProgress(3);
+        this.currentStep = 3;
+
+        // bind
+        body.querySelectorAll('.wizard-option').forEach(el => {
+          el.addEventListener('click', () => {
+            body.querySelectorAll('.wizard-option').forEach(o => o.classList.remove('selected'));
+            el.classList.add('selected');
+            const t = el.querySelector('.wizard-option-text').textContent;
+            this.state[s3.key] = t;
+
+            // Handle followup
+            if (s3.followup && s3.followup[t]) {
+              const fu = s3.followup[t];
+              const fuDiv = document.getElementById('wizard-followup') || (() => {
+                const d = document.createElement('div');
+                d.id = 'wizard-followup';
+                d.style.marginTop = '1.4rem';
+                body.parentElement.insertBefore(d, body.nextSibling);
+                return d;
+              })();
+              fuDiv.innerHTML = `<p class="wizard-question" style="font-size:1.1rem;margin-top:1rem">${fu.q}</p>
+                ${fu.type === 'date' ? `<div class="wizard-date-wrap"><input type="month" class="wizard-date-input" onchange="W.state['${fu.key}']=this.value;document.getElementById('wp-step3-next').disabled=false;"></div>` : ''}`;
+            } else {
+              document.getElementById('wp-step3-next').disabled = false;
+            }
+          });
+        });
+        return;
+      }
+
+      if (s3.type === 'multi') {
+        this.step3Items = s3.items;
+        this.step3CurrentIdx = 0;
+        this._renderStep3Item();
+        this._showPanel('wp-step3');
+        this._setProgress(3);
+        this.currentStep = 3;
+        return;
+      }
+    }
+
+    if (this.currentStep === 3) {
+      this._buildResult();
+      this._showPanel('wp-result');
+      this._setProgress(4);
+    }
+  },
+
+  _renderStep3Item() {
+    const item = this.step3Items[this.step3CurrentIdx];
+    const isLast = this.step3CurrentIdx === this.step3Items.length - 1;
+    const progressText = `${this.step3CurrentIdx + 1} / ${this.step3Items.length}`;
+
+    document.getElementById('wp-step3-q').textContent = item.q;
+    const body = document.getElementById('wp-step3-body');
+    document.getElementById('wp-step3-next').disabled = true;
+    document.getElementById('wp-step3-next').textContent = isLast ? 'Ver resultado →' : 'Próximo →';
+
+    if (item.type === 'options') {
+      body.innerHTML = this._renderOptions(item.opts, `step3_${item.key}`);
+      body.querySelectorAll('.wizard-option').forEach(el => {
+        el.addEventListener('click', () => {
+          body.querySelectorAll('.wizard-option').forEach(o => o.classList.remove('selected'));
+          el.classList.add('selected');
+          this.state[item.key] = el.querySelector('.wizard-option-text').textContent;
+          if (isLast) {
+            document.getElementById('wp-step3-next').disabled = false;
+          } else {
+            // auto-advance to next item after short delay
+            setTimeout(() => {
+              this.step3CurrentIdx++;
+              this._renderStep3Item();
+            }, 280);
+          }
+        });
+      });
+    } else if (item.type === 'text') {
+      body.innerHTML = `<div class="wizard-date-wrap">
+        <input type="text" class="wizard-text-input" placeholder="${item.placeholder || ''}"
+          oninput="W.state['${item.key}']=this.value"
+          onkeyup="document.getElementById('wp-step3-next').disabled=this.value.trim().length<2">
+      </div>`;
+      // if last text item, enable next after typing
+      if (isLast) {
+        document.getElementById('wp-step3-next').disabled = true;
+      }
+    }
+  },
+
+  goBack() {
+    if (this.currentStep === 2) {
+      this._showPanel('wp-start');
+      this._setProgress(1);
+      this.currentStep = 1;
+    } else if (this.currentStep === 3) {
+      this._renderStep2();
+      this._showPanel('wp-step2');
+      this._setProgress(2);
+      this.currentStep = 2;
+    } else if (this.currentStep === 4) {
+      this._showPanel('wp-step3');
+      this._setProgress(3);
+      this.currentStep = 3;
+    }
+  },
+
+  _buildResult() {
+    this.currentStep = 4;
+    const flow = FLOWS[this.area];
+    const res = flow.result(this.state);
+
+    document.getElementById('result-title').textContent =
+      `Com base nas suas respostas, identificamos: ${flow.label}`;
+
+    // Build summary card
+    const rows = [];
+    rows.push({ l: 'Situação identificada', v: this.state.situacao || this.state.beneficio || this.state.perfil || this.state.relacao || '—' });
+    Object.entries(this.state).forEach(([k, v]) => {
+      if (['situacao','beneficio','perfil','relacao'].includes(k)) return;
+      const label = {
+        momento: 'Momento', data_parto: 'Data do parto', previsao_parto: 'Previsão do parto',
+        tempo_incap: 'Tempo incapacitado', laudos: 'Documentação', vinculo: 'Vínculo empregatício',
+        idade: 'Idade', contrib: 'Tempo de contribuição', clt: 'Trabalho com carteira',
+        data_negativa: 'Data da negativa', carta: 'Carta de negativa', recurso: 'Recurso administrativo',
+        motivo: 'Motivo do corte', tempo_recebendo: 'Tempo recebendo', data_corte: 'Data do corte',
+        pessoas_casa: 'Pessoas na casa', renda: 'Renda familiar', bolsa: 'Bolsa Família',
+        data_falec: 'Data do falecimento', contribuia: 'Segurado INSS',
+        quem_negou: 'Responsável pela negativa', urgencia: 'Urgência',
+        instituicao: 'Instituição', especialidade: 'Especialidade',
+      }[k] || k;
+      if (v) rows.push({ l: label, v });
     });
-  }, { threshold: 0.1 });
-  reveals.forEach(r => observer.observe(r));
+    rows.push({ l: 'Possível direito', v: `<span class="result-direito ${res.cls}">${res.d}</span>` });
+    rows.push({ l: 'Recomendação', v: res.rec });
 
-  // WIZARD
-  let currentArea = '';
+    document.getElementById('result-card').innerHTML = rows.map(r =>
+      `<div class="result-row">
+        <span class="result-row-label">${r.l}</span>
+        <span class="result-row-value">${r.v}</span>
+      </div>`
+    ).join('');
 
-  function setStep(n) {
-    [1,2,3].forEach(i => {
-      const dot = document.getElementById('step-ind-' + i);
-      dot.classList.remove('active','done');
+    // Build WhatsApp message
+    const answers = Object.entries(this.state).map(([k, v]) => `• ${v}`).join('\n');
+    const msg = encodeURIComponent(
+      `Olá, vim pelo site.\n\nMeu caso é sobre: *${flow.label}*\n\nMinha situação:\n${answers}\n\nGostaria de uma análise com especialista.`
+    );
+    document.getElementById('result-wa-btn').href = `https://wa.me/${WA}?text=${msg}`;
+  },
+
+  restart() {
+    this.area = null;
+    this.state = {};
+    this.currentStep = 1;
+    this.step3Items = [];
+    this.step3CurrentIdx = 0;
+    // reset selections
+    document.querySelectorAll('.wizard-option').forEach(o => o.classList.remove('selected'));
+    const fu = document.getElementById('wizard-followup');
+    if (fu) fu.remove();
+    this._showPanel('wp-start');
+    this._setProgress(1);
+  },
+
+  _showPanel(id) {
+    document.querySelectorAll('.wizard-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  },
+
+  _setProgress(n) {
+    [1,2,3,4].forEach(i => {
+      const dot = document.getElementById(`sdot-${i}`);
+      dot.classList.remove('active', 'done');
       if (i < n) dot.classList.add('done');
       if (i === n) dot.classList.add('active');
     });
-    [1,2].forEach(i => {
-      const line = document.getElementById('step-line-' + i);
+    [1,2,3].forEach(i => {
+      const line = document.getElementById(`sline-${i}`);
       if (line) line.classList.toggle('done', i < n);
     });
   }
-
-  function hideAll() {
-    document.querySelectorAll('.wizard-panel').forEach(p => p.classList.remove('active'));
-  }
-
-  function selectArea(area) {
-    currentArea = area;
-    hideAll();
-    document.getElementById('panel-' + area).classList.add('active');
-    setStep(2);
-  }
-
-  function selectCase(caseName) {
-    hideAll();
-    document.getElementById('final-case').textContent = caseName;
-
-    const msg = encodeURIComponent(
-      `Olá, Dra. Vandressa! Preciso de ajuda com o seguinte caso: *${caseName}*. Podemos conversar?`
-    );
-    document.getElementById('final-whatsapp').href = `https://wa.me/5585991654288?text=${msg}`;
-    document.getElementById('panel-final').classList.add('active');
-    setStep(3);
-  }
-
-  function goBack(step) {
-    hideAll();
-    if (step === 1) {
-      document.getElementById('panel-1').classList.add('active');
-      setStep(1);
-    } else {
-      document.getElementById('panel-' + currentArea).classList.add('active');
-      setStep(2);
-    }
-  }
+};
 </script>
 </body>
 </html>
