@@ -306,10 +306,7 @@
 
   .sobre-photos {
     position: relative;
-    display: grid;
-    grid-template-columns: 1fr .6fr;
-    gap: 12px;
-    align-items: end;
+    padding: 18px 0 18px 18px;
   }
 
   .sobre-photo-main {
@@ -317,28 +314,43 @@
   }
   .sobre-photo-main img {
     width: 100%;
-    aspect-ratio: 2/3;
+    aspect-ratio: 3/4;
     object-fit: cover;
     object-position: top;
     display: block;
+    position: relative;
+    z-index: 1;
   }
+  /* Moldura offset dourada */
   .sobre-photo-main::before {
     content: '';
     position: absolute;
-    top: -14px; left: -14px;
-    right: 14px; bottom: 14px;
-    border: 1.5px solid rgba(176,125,58,.3);
+    top: -18px; left: -18px;
+    right: 18px; bottom: -18px;
+    border: 1.5px solid rgba(176,125,58,.35);
     z-index: 0;
     pointer-events: none;
   }
-  .sobre-photo-main img { position: relative; z-index: 1; }
-
-  .sobre-photo-small img {
-    width: 100%;
-    aspect-ratio: 2/3;
-    object-fit: cover;
-    object-position: top;
-    display: block;
+  /* Badge OAB sobre a foto */
+  .sobre-badge {
+    position: absolute;
+    bottom: 24px; right: 20px;
+    z-index: 3;
+    background: var(--branco);
+    border: 1px solid rgba(176,125,58,.25);
+    padding: 12px 18px;
+    box-shadow: 0 4px 20px rgba(46,26,8,.08);
+  }
+  .sobre-badge-linha1 {
+    font-family: 'Cinzel', serif;
+    font-size: .58rem; letter-spacing: .22em;
+    color: var(--caramelo); text-transform: uppercase;
+    display: block; margin-bottom: 2px;
+  }
+  .sobre-badge-linha2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem; font-weight: 400;
+    color: var(--texto); display: block;
   }
 
   .sobre-content { position: relative; z-index: 2; }
@@ -984,9 +996,10 @@
     <div class="sobre-photos">
       <div class="sobre-photo-main">
         <img src="nova2.webp" alt="Vandressa Solos do Mar">
-      </div>
-      <div class="sobre-photo-small">
-        <img src="nova3.webp" alt="Vandressa Solos do Mar">
+        <div class="sobre-badge">
+          <span class="sobre-badge-linha1">OAB / CE</span>
+          <span class="sobre-badge-linha2">46.161</span>
+        </div>
       </div>
     </div>
     <div class="sobre-content">
