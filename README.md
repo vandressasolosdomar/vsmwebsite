@@ -62,6 +62,38 @@ gem install jekyll jekyll-seo-tag jekyll-sitemap jekyll-feed
 JEKYLL_NO_BUNDLER_REQUIRE=true jekyll serve
 ```
 
+## Painel administrativo, comentários e visualizações
+
+O blog tem um sistema de comentários com moderação e contador de visualizações, com backend no Supabase (projeto próprio da Vandressa, gratuito) e painel em `/admin/`:
+
+- `/admin/` — login (e-mail e senha) e hub do painel;
+- `/admin/comentarios/` — moderação: aprovar, rejeitar, responder como Dra. Vandressa, excluir;
+- `/admin/visitas/` — visualizações por post: número real registrado, projeção automática configurável (média/dia, variação), ajuste manual e "definir total".
+
+Nos posts, os leitores veem o contador de visualizações e podem comentar (nome + e-mail obrigatórios, com honeypot anti-spam). Comentários só aparecem publicamente após aprovação no painel.
+
+### Ativação (uma única vez)
+
+1. Crie um projeto no [Supabase](https://supabase.com) **na conta dela** (plano gratuito);
+2. Abra **SQL Editor**, cole o conteúdo de [supabase/blog-admin.sql](supabase/blog-admin.sql) e execute;
+3. Em **Authentication → Users → Add user**, crie o login dela (marque "Auto confirm user");
+4. Rode o bloco "PROMOVER ADMIN" no fim do SQL (troque o e-mail);
+5. Em **Project Settings → API**, copie a URL do projeto e a chave publishable (anon) e preencha em `_config.yml`:
+
+```yaml
+supabase_url: "https://SEU-PROJETO.supabase.co"
+supabase_anon_key: "sb_publishable_..."
+```
+
+Enquanto essas chaves estiverem vazias, o site funciona normalmente, apenas sem comentários e sem contador.
+
+### Segurança
+
+- A chave anon é pública por design; a proteção vem das políticas RLS no banco;
+- Leitores anônimos só conseguem inserir comentários "pendentes" e ler os aprovados;
+- A tabela de visualizações é trancada: todo acesso passa por funções `security definer`;
+- Só o usuário com `profiles.role = 'admin'` modera comentários e ajusta visitas.
+
 ## Observações
 
 - A landing (`index.html`) não tem front matter, então o Jekyll a copia sem alterações;

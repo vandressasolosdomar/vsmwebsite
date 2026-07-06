@@ -40,6 +40,9 @@ permalink: /admin/visitas/
   .topbar-logo { display: flex; align-items: center; gap: 14px; }
   .topbar-logo a { color: var(--branco); text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; letter-spacing: .04em; }
   .topbar-logo em { color: var(--dourado-claro); font-style: italic; }
+  .topbar-logo-text { display: flex; flex-direction: column; line-height: 1.25; }
+  .topbar-sub { font-family: 'Cinzel', serif; font-size: .52rem; letter-spacing: .28em;
+    text-transform: uppercase; color: var(--dourado-claro); opacity: .85; white-space: nowrap; }
   .topbar-tag { color: var(--dourado-claro); padding: 4px 10px; border: 1px solid rgba(224,184,106,.35);
     border-radius: 999px; background: rgba(255,255,255,.05); font-family: 'Cinzel', serif;
     font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; }
@@ -151,7 +154,10 @@ permalink: /admin/visitas/
 
 <header class="topbar">
   <div class="topbar-logo">
-    <a href="/admin/">Vandressa <em>Solos do Mar</em></a>
+    <div class="topbar-logo-text">
+      <a href="/admin/">Vandressa <em>Solos do Mar</em></a>
+      <span class="topbar-sub">Advogada em Fortaleza</span>
+    </div>
     <span class="topbar-tag">Visitas do Blog</span>
   </div>
   <div class="topbar-actions" id="topbar-actions"></div>
