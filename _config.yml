@@ -1,0 +1,47 @@
+# Configuração do site / blog Jekyll
+title: Vandressa Solos do Mar
+tagline: Advogada Previdenciária em Fortaleza
+description: >-
+  Advogada especialista em INSS, benefícios previdenciários e direito da saúde.
+  Atendimento humanizado em Fortaleza/CE e todo o Brasil. OAB/CE 46.161.
+url: "https://advsolosdomar.com.br"
+lang: pt_BR
+timezone: America/Fortaleza
+
+author:
+  name: Vandressa Solos do Mar
+
+logo: /nova1.webp
+social:
+  name: Vandressa Solos do Mar
+  links:
+    - https://www.instagram.com/adv.solosdomar
+
+# URLs dos posts: advsolosdomar.com.br/blog/nome-do-post/
+permalink: /blog/:title/
+
+markdown: kramdown
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+
+feed:
+  posts_limit: 20
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: post
+      image: /nova1.webp
+      author: Vandressa Solos do Mar
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
+  - .jekyll-cache
