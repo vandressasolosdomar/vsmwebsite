@@ -1,0 +1,419 @@
+---
+layout: null
+permalink: /admin/visitas/
+---
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visitas do Blog — Vandressa Solos do Mar</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cinzel:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  :root {
+    --creme: #F6F0E8; --bege: #EAD9C2; --bege-medio: #D0B48A;
+    --caramelo: #B07D3A; --dourado-claro: #E0B86A; --dourado-escuro: #8A621E;
+    --marrom: #2E1A08; --marrom-medio: #4A2C10;
+    --texto: #2A1A08; --texto-suave: #6B4E2A; --texto-claro: #9A7850;
+    --branco: #FDFAF5; --cinza: #F0EBE3;
+    --linha: rgba(176,125,58,.3); --linha-suave: rgba(176,125,58,.15);
+    --danger: #b84a4a; --success: #24745c;
+  }
+  html, body { background: var(--creme); color: var(--texto); font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; }
+  body::before { content: ""; position: fixed; inset: 0 0 auto; height: 4px;
+    background: linear-gradient(90deg, var(--caramelo), var(--dourado-claro)); z-index: 80; pointer-events: none; }
+  button, input { font: inherit; }
+  button { cursor: pointer; }
+  a { color: var(--caramelo); }
+
+  .topbar { position: sticky; top: 0; z-index: 70; min-height: 68px;
+    background: rgba(46,26,8,.97); color: var(--branco); padding: 14px 32px;
+    display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    border-bottom: 1px solid rgba(224,184,106,.25); }
+  .topbar-logo { display: flex; align-items: center; gap: 14px; }
+  .topbar-logo a { color: var(--branco); text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; letter-spacing: .04em; }
+  .topbar-logo em { color: var(--dourado-claro); font-style: italic; }
+  .topbar-tag { color: var(--dourado-claro); padding: 4px 10px; border: 1px solid rgba(224,184,106,.35);
+    border-radius: 999px; background: rgba(255,255,255,.05); font-family: 'Cinzel', serif;
+    font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; }
+  .topbar-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .topbar-user { font-size: .8rem; color: rgba(234,217,194,.85); }
+  .btn-link { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
+    border-radius: 999px; color: var(--bege); padding: 6px 12px; font-size: .7rem;
+    font-weight: 600; letter-spacing: .08em; text-transform: uppercase; text-decoration: none;
+    transition: all .18s; }
+  .btn-link:hover { color: #fff; border-color: rgba(224,184,106,.5); background: rgba(255,255,255,.12); }
+
+  .auth-wrap, .app-wrap { width: min(100%, 1180px); margin: 0 auto; padding: 36px 28px 80px; }
+  .auth-wrap { max-width: 460px; }
+
+  .card { background: var(--branco); border: 1px solid var(--linha-suave); padding: 30px; margin-bottom: 22px; }
+  .card h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; font-weight: 400; margin-bottom: 6px; }
+  .card h2 em { font-style: italic; color: var(--caramelo); }
+  .card .subtitle { font-size: .9rem; color: var(--texto-suave); font-weight: 300; margin-bottom: 22px; }
+
+  .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+  .form-group label { color: var(--texto-suave); font-family: 'Cinzel', serif;
+    font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; }
+  .form-group input { background: #fff; border: 1px solid var(--linha); border-radius: 2px;
+    color: var(--texto); padding: 10px 12px; font-size: .94rem; outline: none;
+    transition: border-color .16s; }
+  .form-group input:focus { border-color: var(--caramelo); }
+
+  .btn-primary, .btn-secondary { display: inline-flex; align-items: center; justify-content: center;
+    gap: 6px; border-radius: 2px; min-height: 36px; padding: 8px 14px; font-size: .72rem;
+    font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+    border: 1px solid transparent; text-decoration: none;
+    transition: background .18s, color .18s, border-color .18s, transform .18s; }
+  .btn-primary { background: var(--caramelo); color: var(--branco); }
+  .btn-primary:hover { background: var(--dourado-escuro); transform: translateY(-1px); }
+  .btn-secondary { background: #fff; color: var(--texto); border-color: var(--linha); }
+  .btn-secondary:hover { border-color: var(--caramelo); color: var(--caramelo); }
+  .btn-full { width: 100%; }
+  .btn-primary:disabled, .btn-secondary:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+
+  .msg { border-radius: 2px; padding: 10px 12px; font-size: .88rem; margin-bottom: 14px; }
+  .msg.error { background: #fdf0f0; color: var(--danger); border: 1px solid #f0c8c8; }
+  .msg.success { background: #edf7ef; color: var(--success); border: 1px solid #b9e0cf; }
+  .msg.info { background: var(--cinza); color: var(--texto-suave); border: 1px solid var(--linha-suave); }
+
+  .toolbar { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+  .search { display: flex; gap: 8px; align-items: center; }
+  .search input { border: 1px solid var(--linha); border-radius: 2px; background: #fff;
+    padding: 9px 12px; min-width: 240px; font-size: .9rem; outline: none; }
+  .search input:focus { border-color: var(--caramelo); }
+
+  .totals { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 22px; }
+  .stat { flex: 1 1 200px; background: #fff; border: 1px solid var(--linha-suave); padding: 16px 18px; }
+  .stat .stat-label { font-family: 'Cinzel', serif; font-size: .6rem; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--texto-suave); }
+  .stat .stat-value { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--texto); margin-top: 4px; }
+  .stat.is-real .stat-value { color: var(--caramelo); }
+
+  .vlist { display: flex; flex-direction: column; gap: 14px; }
+  .vitem { background: #fff; border: 1px solid var(--linha-suave); padding: 18px 20px; }
+  .vitem.is-off { opacity: .7; }
+  .vitem-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 14px; margin-bottom: 6px; }
+  .vitem-title { font-weight: 600; color: var(--texto); font-size: 1rem; }
+  .vitem-slug { font-size: .76rem; color: var(--texto-claro); word-break: break-all; }
+  .vitem-slug a { text-decoration: none; }
+  .vitem-slug a:hover { text-decoration: underline; }
+
+  .badges { display: flex; gap: 10px; flex-wrap: wrap; margin: 8px 0 14px; }
+  .badge { display: inline-flex; align-items: baseline; gap: 6px; padding: 6px 12px; border-radius: 999px;
+    font-size: .82rem; font-weight: 600; }
+  .badge b { font-size: 1.05rem; font-variant-numeric: tabular-nums; }
+  .badge.real { background: rgba(176,125,58,.12); color: var(--dourado-escuro); }
+  .badge.pub  { background: rgba(74,44,16,.1); color: var(--marrom-medio); }
+
+  .vgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; align-items: end; }
+  .vgrid .form-group { margin-bottom: 0; }
+  .switch-row { display: flex; align-items: center; gap: 8px; }
+  .switch-row input { width: 18px; height: 18px; accent-color: var(--caramelo); }
+  .switch-row label { text-transform: none; letter-spacing: 0; font-family: 'Inter', sans-serif;
+    font-weight: 600; color: var(--texto); font-size: .86rem; }
+
+  .vitem-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 14px; }
+  .vitem-msg { font-size: .82rem; }
+  .vitem-msg.ok  { color: var(--success); }
+  .vitem-msg.err { color: var(--danger); }
+  .hint { font-size: .74rem; color: var(--texto-claro); margin-top: 4px; }
+
+  .set-total { display: flex; gap: 8px; align-items: flex-end; flex-wrap: wrap; margin-top: 12px;
+    padding-top: 12px; border-top: 1px dashed var(--linha); }
+  .set-total .form-group { margin-bottom: 0; min-width: 200px; }
+
+  .empty-state { text-align: center; padding: 50px 20px; color: var(--texto-claro); font-size: .94rem;
+    background: var(--cinza); border: 1px dashed var(--linha); }
+  .loading { display: flex; align-items: center; justify-content: center; padding: 50px 20px; color: var(--texto-suave); font-size: .92rem; }
+  .spinner { width: 20px; height: 20px; border: 2px solid var(--bege); border-top-color: var(--caramelo);
+    border-radius: 50%; animation: spin .8s linear infinite; margin-right: 10px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  :focus-visible { outline: 3px solid rgba(176,125,58,.3); outline-offset: 2px; }
+
+  @media (max-width: 720px) {
+    .topbar { flex-direction: column; align-items: flex-start; gap: 10px; padding: 12px 16px; }
+    .topbar-tag { display: none; }
+    .auth-wrap, .app-wrap { padding: 24px 14px 60px; }
+    .card { padding: 20px 16px; }
+    .search input { min-width: 0; width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-logo">
+    <a href="/admin/">Vandressa <em>Solos do Mar</em></a>
+    <span class="topbar-tag">Visitas do Blog</span>
+  </div>
+  <div class="topbar-actions" id="topbar-actions"></div>
+</header>
+
+<!-- AUTH -->
+<main class="auth-wrap" id="view-auth" hidden>
+  <div class="card">
+    <h2>Acesso <em>restrito</em></h2>
+    <p class="subtitle">Entre com suas credenciais para ver as visitas do blog.</p>
+    <div id="msg-login"></div>
+    <form id="form-login">
+      <div class="form-group">
+        <label>E-mail</label>
+        <input type="email" id="login-email" required autocomplete="email">
+      </div>
+      <div class="form-group">
+        <label>Senha</label>
+        <input type="password" id="login-password" required autocomplete="current-password">
+      </div>
+      <button type="submit" class="btn-primary btn-full">Entrar</button>
+    </form>
+  </div>
+</main>
+
+<!-- APP -->
+<main class="app-wrap" id="view-app" hidden>
+  <div class="card">
+    <h2>Visitas <em>do blog</em></h2>
+    <p class="subtitle">
+      Acompanhe e ajuste as métricas de visualização de cada post.
+    </p>
+
+    <div class="totals" id="totals"></div>
+
+    <div class="toolbar">
+      <div class="search">
+        <input type="search" id="search-input" placeholder="Buscar por título ou slug...">
+      </div>
+      <button class="btn-secondary" id="btn-refresh" type="button">Recarregar</button>
+    </div>
+
+    <div id="msg-global"></div>
+
+    <div id="vlist-wrap">
+      <div class="loading"><span class="spinner"></span>Carregando visitas...</div>
+    </div>
+  </div>
+</main>
+
+<script>
+const SUPABASE_URL      = '{{ site.supabase_url }}';
+const SUPABASE_ANON_KEY = '{{ site.supabase_anon_key }}';
+
+function $(id){ return document.getElementById(id); }
+function show(id){ $(id).hidden = false; }
+function hide(id){ $(id).hidden = true; }
+function setMsg(id, type, text){ const el=$(id); el.innerHTML = text ? '<div class="msg ' + type + '">' + text + '</div>' : ''; }
+function escapeHtml(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+function fmtInt(n){ return Number(n||0).toLocaleString('pt-BR'); }
+
+if (!SUPABASE_URL || !SUPABASE_ANON_KEY || !window.supabase){
+  show('view-auth');
+  $('form-login').hidden = true;
+  setMsg('msg-login', 'info', 'Supabase ainda não configurado. Preencha <code>supabase_url</code> e <code>supabase_anon_key</code> no <code>_config.yml</code>.');
+} else {
+
+// Sem storageKey customizado para compartilhar a sessão com /admin/.
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+const __cache = {
+  get(key){ try { const raw = localStorage.getItem(key); if(!raw) return null; const o = JSON.parse(raw);
+    if(!o || !o.exp || Date.now() > o.exp){ try{localStorage.removeItem(key);}catch(_){} return null; } return o.data; } catch(_){ return null; } },
+  set(key,data,ttl){ try{ localStorage.setItem(key, JSON.stringify({data, exp: Date.now()+ttl})); }catch(_){} },
+  remove(key){ try{ localStorage.removeItem(key); }catch(_){} },
+  removePrefix(p){ try{ const ks=[]; for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i); if(k&&k.startsWith(p))ks.push(k);} ks.forEach(k=>localStorage.removeItem(k)); }catch(_){} }
+};
+
+let currentUser = null;
+let rows = [];
+let term = '';
+
+function renderTopbar(){
+  const el = $('topbar-actions');
+  if (currentUser){
+    el.innerHTML =
+      '<span class="topbar-user">' + escapeHtml(currentUser.email||'') + '</span>' +
+      '<a class="btn-link" href="/admin/comentarios/">Comentários</a>' +
+      '<a class="btn-link" href="/admin/">← Painel</a>' +
+      '<button class="btn-link" id="btn-logout" type="button">Sair</button>';
+    $('btn-logout').addEventListener('click', async function(){
+      __cache.removePrefix('profile_vsm_');
+      await sb.auth.signOut();
+      window.location.reload();
+    });
+  } else { el.innerHTML = ''; }
+}
+
+async function checkSession(){
+  const { data } = await sb.auth.getSession();
+  currentUser = data.session ? data.session.user : null;
+  if (!currentUser){ renderTopbar(); show('view-auth'); hide('view-app'); return; }
+  const profileKey = 'profile_vsm_' + currentUser.id;
+  let prof = __cache.get(profileKey);
+  if (!prof){
+    const { data: p } = await sb.from('profiles').select('role, full_name').eq('id', currentUser.id).maybeSingle();
+    prof = p; if (prof) __cache.set(profileKey, prof, 60*60*1000);
+  }
+  if (!prof || prof.role !== 'admin'){
+    __cache.remove(profileKey); await sb.auth.signOut(); currentUser = null;
+    renderTopbar(); show('view-auth'); hide('view-app');
+    setMsg('msg-login', 'error', 'Esta área é exclusiva da administração do site.'); return;
+  }
+  currentUser.profile = prof;
+  renderTopbar(); show('view-app'); hide('view-auth'); load();
+}
+
+$('form-login').addEventListener('submit', async function(e){
+  e.preventDefault(); setMsg('msg-login','','');
+  const email = $('login-email').value.trim();
+  const password = $('login-password').value;
+  const { error } = await sb.auth.signInWithPassword({ email, password });
+  if (error){ setMsg('msg-login','error', escapeHtml(error.message)); return; }
+  await checkSession();
+});
+
+async function load(){
+  $('vlist-wrap').innerHTML = '<div class="loading"><span class="spinner"></span>Carregando visitas...</div>';
+  setMsg('msg-global','','');
+  const { data, error } = await sb.rpc('admin_blog_views');
+  if (error){
+    $('vlist-wrap').innerHTML = '';
+    setMsg('msg-global','error','Erro ao carregar: ' + escapeHtml(error.message)); return;
+  }
+  rows = data || [];
+  renderTotals();
+  renderList();
+}
+
+function renderTotals(){
+  let reg = 0, tot = 0;
+  rows.forEach(r => { reg += Number(r.registered||0); tot += Number(r.total||0); });
+  $('totals').innerHTML =
+    '<div class="stat"><div class="stat-label">Visualizações</div><div class="stat-value">' + fmtInt(tot) + '</div></div>' +
+    '<div class="stat is-real"><div class="stat-label">Registrados</div><div class="stat-value">' + fmtInt(reg) + '</div></div>' +
+    '<div class="stat"><div class="stat-label">Posts</div><div class="stat-value">' + fmtInt(rows.length) + '</div></div>';
+}
+
+function filtered(){
+  const t = term.toLowerCase();
+  if (!t) return rows;
+  return rows.filter(r => (r.title||'').toLowerCase().includes(t) || (r.slug||'').toLowerCase().includes(t));
+}
+
+function renderList(){
+  const list = filtered();
+  const wrap = $('vlist-wrap');
+  if (list.length === 0){ wrap.innerHTML = '<div class="empty-state">Nenhum post neste filtro. Os posts aparecem aqui após a primeira visita registrada.</div>'; return; }
+  const html = ['<div class="vlist">'];
+  list.forEach(r => {
+    const off = !r.active;
+    html.push(
+      '<article class="vitem' + (off?' is-off':'') + '" data-slug="' + escapeHtml(r.slug) + '">' +
+        '<div class="vitem-head">' +
+          '<span class="vitem-title">' + escapeHtml(r.title || r.slug) + '</span>' +
+        '</div>' +
+        '<div class="vitem-slug"><a href="' + escapeHtml(r.slug) + '" target="_blank" rel="noopener">' + escapeHtml(r.slug) + '</a></div>' +
+        '<div class="badges">' +
+          '<span class="badge pub">Total <b>' + fmtInt(r.total) + '</b></span>' +
+          '<span class="badge real">Registrados <b>' + fmtInt(r.registered) + '</b></span>' +
+        '</div>' +
+        '<div class="vgrid">' +
+          '<div class="form-group"><div class="switch-row">' +
+            '<input type="checkbox" data-f="active"' + (r.active?' checked':'') + ' id="be_'+escapeHtml(r.slug)+'">' +
+            '<label for="be_'+escapeHtml(r.slug)+'">Projeção automática</label>' +
+          '</div></div>' +
+          '<div class="form-group"><label>Média / dia</label>' +
+            '<input type="number" min="0" step="50" data-f="rate" value="' + Number(r.rate||0) + '"></div>' +
+          '<div class="form-group"><label>Variação (%)</label>' +
+            '<input type="number" min="0" max="90" step="5" data-f="var_pct" value="' + Number(r.var_pct||0) + '"></div>' +
+          '<div class="form-group"><label>Ajuste manual (+/−)</label>' +
+            '<input type="number" step="1" data-f="adjust" value="' + Number(r.adjust||0) + '"></div>' +
+          '<div class="form-group"><label>Data de publicação</label>' +
+            '<input type="date" data-f="published" value="' + (r.published || '') + '"></div>' +
+        '</div>' +
+        '<div class="hint">Alterar a média recalcula todo o histórico. Para fixar um valor exato, use o campo abaixo.</div>' +
+        '<div class="vitem-actions">' +
+          '<button class="btn-primary" data-act="save">Salvar</button>' +
+          '<span class="vitem-msg" data-msg></span>' +
+        '</div>' +
+        '<div class="set-total">' +
+          '<div class="form-group"><label>Definir total agora</label>' +
+            '<input type="number" min="0" step="1" data-settotal placeholder="ex.: 5000"></div>' +
+          '<button class="btn-secondary" data-act="settotal">Aplicar</button>' +
+        '</div>' +
+      '</article>'
+    );
+  });
+  html.push('</div>');
+  wrap.innerHTML = html.join('');
+}
+
+function collectParams(item){
+  const p = { p_slug: item.dataset.slug };
+  item.querySelectorAll('[data-f]').forEach(el => {
+    const f = el.dataset.f;
+    if (f === 'active')         p.p_active    = el.checked;
+    else if (f === 'rate')      p.p_rate      = parseInt(el.value || '0', 10) || 0;
+    else if (f === 'var_pct')   p.p_var       = parseInt(el.value || '0', 10) || 0;
+    else if (f === 'adjust')    p.p_adjust    = parseInt(el.value || '0', 10) || 0;
+    else if (f === 'published') p.p_published = el.value || null;
+  });
+  return p;
+}
+
+async function saveParams(params, msgEl){
+  const { error } = await sb.rpc('admin_update_post_views', params);
+  if (error){ if (msgEl){ msgEl.className='vitem-msg err'; msgEl.textContent='Erro: '+error.message; } return false; }
+  if (msgEl){ msgEl.className='vitem-msg ok'; msgEl.textContent='Salvo ✓'; }
+  return true;
+}
+
+document.addEventListener('click', async function(e){
+  if (e.target.id === 'btn-refresh'){ load(); return; }
+  const btn = e.target.closest('button[data-act]');
+  if (!btn) return;
+  const item = btn.closest('.vitem'); if (!item) return;
+  const slug = item.dataset.slug;
+  const r = rows.find(x => x.slug === slug);
+  const msgEl = item.querySelector('[data-msg]');
+  const act = btn.dataset.act;
+
+  if (act === 'save'){
+    btn.disabled = true;
+    const ok = await saveParams(collectParams(item), msgEl);
+    btn.disabled = false;
+    if (ok) await load();
+    return;
+  }
+
+  if (act === 'settotal'){
+    const input = item.querySelector('[data-settotal]');
+    const desired = parseInt(input.value || '', 10);
+    if (!isFinite(desired) || desired < 0){ msgEl.className='vitem-msg err'; msgEl.textContent='Informe um número válido.'; return; }
+    // base sem o ajuste; novo ajuste = desejado - base
+    const base = Number(r.total||0) - Number(r.adjust||0);
+    const newAdjust = desired - base;
+    btn.disabled = true;
+    const ok = await saveParams({ p_slug: slug, p_adjust: newAdjust }, msgEl);
+    btn.disabled = false;
+    if (ok){ input.value=''; await load(); }
+    return;
+  }
+});
+
+$('search-input').addEventListener('input', function(){ term = this.value || ''; renderList(); });
+
+checkSession();
+sb.auth.onAuthStateChange(function(){ checkSession(); });
+
+}
+</script>
+
+</body>
+</html>

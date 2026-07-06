@@ -30,6 +30,12 @@ plugins:
 feed:
   posts_limit: 20
 
+# Supabase do blog (comentários + visualizações) — projeto próprio da Vandressa.
+# Preencha após rodar supabase/blog-admin.sql (Project Settings -> API).
+# Enquanto vazio, o site funciona normalmente, sem comentários nem contador.
+supabase_url: ""
+supabase_anon_key: ""
+
 defaults:
   - scope:
       path: ""

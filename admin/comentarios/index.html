@@ -1,0 +1,518 @@
+---
+layout: null
+permalink: /admin/comentarios/
+---
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comentários do Blog — Vandressa Solos do Mar</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cinzel:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  :root {
+    --creme: #F6F0E8; --bege: #EAD9C2; --bege-medio: #D0B48A;
+    --caramelo: #B07D3A; --dourado-claro: #E0B86A; --dourado-escuro: #8A621E;
+    --marrom: #2E1A08; --marrom-medio: #4A2C10;
+    --texto: #2A1A08; --texto-suave: #6B4E2A; --texto-claro: #9A7850;
+    --branco: #FDFAF5; --cinza: #F0EBE3;
+    --linha: rgba(176,125,58,.3); --linha-suave: rgba(176,125,58,.15);
+    --danger: #b84a4a; --success: #24745c;
+  }
+  html, body { background: var(--creme); color: var(--texto); font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; }
+  body::before { content: ""; position: fixed; inset: 0 0 auto; height: 4px;
+    background: linear-gradient(90deg, var(--caramelo), var(--dourado-claro)); z-index: 80; pointer-events: none; }
+  button, input, textarea { font: inherit; }
+  button { cursor: pointer; }
+  a { color: var(--caramelo); }
+
+  .topbar { position: sticky; top: 0; z-index: 70; min-height: 68px;
+    background: rgba(46,26,8,.97); color: var(--branco); padding: 14px 32px;
+    display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    border-bottom: 1px solid rgba(224,184,106,.25); }
+  .topbar-logo { display: flex; align-items: center; gap: 14px; }
+  .topbar-logo a { color: var(--branco); text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; letter-spacing: .04em; }
+  .topbar-logo em { color: var(--dourado-claro); font-style: italic; }
+  .topbar-tag { color: var(--dourado-claro); padding: 4px 10px; border: 1px solid rgba(224,184,106,.35);
+    border-radius: 999px; background: rgba(255,255,255,.05); font-family: 'Cinzel', serif;
+    font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; }
+  .topbar-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .topbar-user { font-size: .8rem; color: rgba(234,217,194,.85); }
+  .btn-link { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
+    border-radius: 999px; color: var(--bege); padding: 6px 12px; font-size: .7rem;
+    font-weight: 600; letter-spacing: .08em; text-transform: uppercase; text-decoration: none;
+    transition: all .18s; }
+  .btn-link:hover { color: #fff; border-color: rgba(224,184,106,.5); background: rgba(255,255,255,.12); }
+
+  .auth-wrap, .app-wrap { width: min(100%, 1180px); margin: 0 auto; padding: 36px 28px 80px; }
+  .auth-wrap { max-width: 460px; }
+
+  .card { background: var(--branco); border: 1px solid var(--linha-suave); padding: 30px; margin-bottom: 22px; }
+  .card h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; font-weight: 400; margin-bottom: 6px; }
+  .card h2 em { font-style: italic; color: var(--caramelo); }
+  .card .subtitle { font-size: .9rem; color: var(--texto-suave); font-weight: 300; margin-bottom: 22px; }
+
+  .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+  .form-group label { color: var(--texto-suave); font-family: 'Cinzel', serif;
+    font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; }
+  .form-group input { background: #fff; border: 1px solid var(--linha); border-radius: 2px;
+    color: var(--texto); padding: 10px 12px; font-size: .94rem; outline: none;
+    transition: border-color .16s; }
+  .form-group input:focus { border-color: var(--caramelo); }
+
+  .btn-primary, .btn-secondary, .btn-danger, .btn-success { display: inline-flex; align-items: center;
+    justify-content: center; gap: 6px; border-radius: 2px; min-height: 36px;
+    padding: 8px 14px; font-size: .72rem; font-weight: 600; letter-spacing: .06em;
+    text-transform: uppercase; border: 1px solid transparent; text-decoration: none;
+    transition: background .18s, color .18s, border-color .18s, transform .18s; }
+  .btn-primary { background: var(--caramelo); color: var(--branco); }
+  .btn-primary:hover { background: var(--dourado-escuro); transform: translateY(-1px); }
+  .btn-secondary { background: #fff; color: var(--texto); border-color: var(--linha); }
+  .btn-secondary:hover { border-color: var(--caramelo); color: var(--caramelo); }
+  .btn-success { background: #e9f5ee; color: var(--success); border-color: #b6dec9; }
+  .btn-success:hover { background: #d8ecdf; }
+  .btn-danger { background: #fdebeb; color: var(--danger); border-color: #f0c8c8; }
+  .btn-danger:hover { background: #f7d8d8; }
+  .btn-full { width: 100%; }
+  .btn-primary:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+
+  .msg { border-radius: 2px; padding: 10px 12px; font-size: .88rem; margin-bottom: 14px; }
+  .msg.error { background: #fdf0f0; color: var(--danger); border: 1px solid #f0c8c8; }
+  .msg.success { background: #edf7ef; color: var(--success); border: 1px solid #b9e0cf; }
+  .msg.info { background: var(--cinza); color: var(--texto-suave); border: 1px solid var(--linha-suave); }
+
+  .toolbar { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+  .tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tab { border: 1px solid var(--linha); background: #fff; border-radius: 999px;
+    padding: 7px 14px; font-size: .78rem; font-weight: 600; color: var(--texto-suave);
+    transition: all .16s; }
+  .tab:hover { color: var(--texto); border-color: var(--caramelo); }
+  .tab.is-active { background: var(--marrom); color: var(--bege); border-color: var(--marrom); }
+  .tab .count { margin-left: 6px; font-size: .7rem; opacity: .7; }
+
+  .search { display: flex; gap: 8px; align-items: center; }
+  .search input { border: 1px solid var(--linha); border-radius: 2px; background: #fff;
+    padding: 9px 12px; min-width: 240px; font-size: .9rem; outline: none; }
+  .search input:focus { border-color: var(--caramelo); }
+
+  .clist { display: flex; flex-direction: column; gap: 14px; }
+  .citem { background: #fff; border: 1px solid var(--linha-suave); padding: 18px 20px;
+    transition: border-color .16s, box-shadow .16s; }
+  .citem:hover { box-shadow: 0 8px 24px rgba(46,26,8,.07); border-color: rgba(176,125,58,.4); }
+  .citem.is-pending  { border-left: 4px solid var(--dourado-claro); }
+  .citem.is-approved { border-left: 4px solid var(--success); }
+  .citem.is-rejected { border-left: 4px solid var(--danger); opacity: .85; }
+  .citem-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 14px; margin-bottom: 8px; }
+  .citem-name { font-weight: 600; color: var(--texto); font-size: .96rem; }
+  .citem-email { color: var(--texto-claro); font-size: .8rem; }
+  .citem-date { color: var(--texto-claro); font-size: .78rem; margin-left: auto; }
+  .citem-status { font-size: .64rem; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; padding: 2px 8px; border-radius: 999px; }
+  .citem-status.pendente  { background: rgba(224,184,106,.25); color: #8a5a12; }
+  .citem-status.aprovado  { background: rgba(36,116,92,.14); color: var(--success); }
+  .citem-status.rejeitado { background: rgba(184,74,74,.14); color: var(--danger); }
+  .citem-status.admin-badge { background: rgba(176,125,58,.18); color: var(--dourado-escuro); }
+  .citem-post { font-size: .78rem; color: var(--caramelo); margin-bottom: 10px; word-break: break-all; }
+  .citem-post a { text-decoration: none; }
+  .citem-post a:hover { text-decoration: underline; }
+  .citem-body { color: var(--texto-suave); font-size: .94rem; line-height: 1.55;
+    white-space: pre-wrap; word-wrap: break-word; background: var(--creme);
+    padding: 12px 14px; border: 1px solid var(--linha-suave); }
+  .citem-reply-to { color: var(--texto-claro); font-size: .78rem; margin-bottom: 6px; }
+  .citem-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+  .citem-reply-box { margin-top: 12px; padding: 12px; background: rgba(176,125,58,.06);
+    border: 1px solid rgba(176,125,58,.3); }
+  .citem-reply-box textarea { width: 100%; min-height: 80px; border: 1px solid var(--linha);
+    border-radius: 2px; padding: 8px 10px; color: var(--texto); background: #fff; outline: none; resize: vertical; }
+  .citem-reply-box textarea:focus { border-color: var(--caramelo); }
+  .citem-reply-box .row { display: flex; gap: 8px; margin-top: 8px; }
+
+  .empty-state { text-align: center; padding: 50px 20px; color: var(--texto-claro);
+    font-size: .94rem; background: var(--cinza); border: 1px dashed var(--linha); }
+  .loading { display: flex; align-items: center; justify-content: center; padding: 50px 20px; color: var(--texto-suave); font-size: .92rem; }
+  .spinner { width: 20px; height: 20px; border: 2px solid var(--bege); border-top-color: var(--caramelo);
+    border-radius: 50%; animation: spin .8s linear infinite; margin-right: 10px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  :focus-visible { outline: 3px solid rgba(176,125,58,.3); outline-offset: 2px; }
+
+  @media (max-width: 720px) {
+    .topbar { flex-direction: column; align-items: flex-start; gap: 10px; padding: 12px 16px; }
+    .topbar-tag { display: none; }
+    .auth-wrap, .app-wrap { padding: 24px 14px 60px; }
+    .card { padding: 20px 16px; }
+    .toolbar { flex-direction: column; align-items: stretch; }
+    .search input { min-width: 0; width: 100%; }
+    .citem { padding: 14px 16px; }
+    .citem-date { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-logo">
+    <a href="/admin/">Vandressa <em>Solos do Mar</em></a>
+    <span class="topbar-tag">Comentários do Blog</span>
+  </div>
+  <div class="topbar-actions" id="topbar-actions"></div>
+</header>
+
+<!-- AUTH -->
+<main class="auth-wrap" id="view-auth" hidden>
+  <div class="card">
+    <h2>Acesso <em>restrito</em></h2>
+    <p class="subtitle">Entre com suas credenciais para moderar os comentários.</p>
+    <div id="msg-login"></div>
+    <form id="form-login">
+      <div class="form-group">
+        <label>E-mail</label>
+        <input type="email" id="login-email" required autocomplete="email">
+      </div>
+      <div class="form-group">
+        <label>Senha</label>
+        <input type="password" id="login-password" required autocomplete="current-password">
+      </div>
+      <button type="submit" class="btn-primary btn-full">Entrar</button>
+    </form>
+  </div>
+</main>
+
+<!-- APP -->
+<main class="app-wrap" id="view-app" hidden>
+  <div class="card">
+    <h2>Comentários <em>do blog</em></h2>
+    <p class="subtitle">Aprove, rejeite ou responda os comentários enviados pelos leitores.</p>
+
+    <div class="toolbar">
+      <div class="tabs" id="tabs">
+        <button class="tab is-active" data-status="pendente">Pendentes <span class="count" id="count-pendente">0</span></button>
+        <button class="tab" data-status="aprovado">Aprovados <span class="count" id="count-aprovado">0</span></button>
+        <button class="tab" data-status="rejeitado">Rejeitados <span class="count" id="count-rejeitado">0</span></button>
+        <button class="tab" data-status="todos">Todos <span class="count" id="count-todos">0</span></button>
+      </div>
+      <div class="search">
+        <input type="search" id="search-input" placeholder="Buscar por nome, e-mail ou texto...">
+        <button class="btn-secondary" id="btn-refresh" type="button" title="Recarregar">Recarregar</button>
+      </div>
+    </div>
+
+    <div id="msg-global"></div>
+
+    <div id="clist-wrap">
+      <div class="loading"><span class="spinner"></span>Carregando comentários...</div>
+    </div>
+  </div>
+</main>
+
+<script>
+const SUPABASE_URL      = '{{ site.supabase_url }}';
+const SUPABASE_ANON_KEY = '{{ site.supabase_anon_key }}';
+const ADMIN_NAME        = 'Dra. Vandressa Solos do Mar';
+
+function $(id){ return document.getElementById(id); }
+function show(id){ $(id).hidden = false; }
+function hide(id){ $(id).hidden = true; }
+function setMsg(id, type, text){ $(id).innerHTML = text ? '<div class="msg ' + type + '">' + text + '</div>' : ''; }
+function escapeHtml(s){
+  return String(s == null ? '' : s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+function fmtDate(iso){
+  if (!iso) return '—';
+  return new Date(iso).toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' });
+}
+
+if (!SUPABASE_URL || !SUPABASE_ANON_KEY || !window.supabase){
+  show('view-auth');
+  $('form-login').hidden = true;
+  setMsg('msg-login', 'info', 'Supabase ainda não configurado. Preencha <code>supabase_url</code> e <code>supabase_anon_key</code> no <code>_config.yml</code>.');
+} else {
+
+// Sem storageKey customizado para compartilhar a sessão com /admin/.
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+const __cache = {
+  get(key){ try { const raw = localStorage.getItem(key); if(!raw) return null; const o = JSON.parse(raw);
+    if(!o || !o.exp || Date.now() > o.exp){ try{localStorage.removeItem(key);}catch(_){} return null; } return o.data; } catch(_){ return null; } },
+  set(key,data,ttl){ try{ localStorage.setItem(key, JSON.stringify({data, exp: Date.now()+ttl})); }catch(_){} },
+  remove(key){ try{ localStorage.removeItem(key); }catch(_){} },
+  removePrefix(p){ try{ const ks=[]; for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i); if(k&&k.startsWith(p))ks.push(k);} ks.forEach(k=>localStorage.removeItem(k)); }catch(_){} }
+};
+
+let currentUser  = null;
+let allComments  = [];
+let currentTab   = 'pendente';
+let currentTerm  = '';
+
+// Auth -------------------------------------------------------------------
+function renderTopbar(){
+  const el = $('topbar-actions');
+  if (currentUser){
+    el.innerHTML =
+      '<span class="topbar-user">' + escapeHtml(currentUser.email || '') + '</span>' +
+      '<a class="btn-link" href="/admin/visitas/">Visitas</a>' +
+      '<a class="btn-link" href="/admin/">← Painel</a>' +
+      '<button class="btn-link" id="btn-logout" type="button">Sair</button>';
+    $('btn-logout').addEventListener('click', async function(){
+      __cache.removePrefix('profile_vsm_');
+      await sb.auth.signOut();
+      window.location.reload();
+    });
+  } else {
+    el.innerHTML = '';
+  }
+}
+
+async function checkSession(){
+  const { data } = await sb.auth.getSession();
+  currentUser = data.session ? data.session.user : null;
+  if (!currentUser){
+    renderTopbar();
+    show('view-auth'); hide('view-app');
+    return;
+  }
+  const profileKey = 'profile_vsm_' + currentUser.id;
+  let prof = __cache.get(profileKey);
+  if (!prof) {
+    const { data: p } = await sb.from('profiles')
+      .select('role, full_name').eq('id', currentUser.id).maybeSingle();
+    prof = p;
+    if (prof) __cache.set(profileKey, prof, 60 * 60 * 1000);
+  }
+  if (!prof || prof.role !== 'admin'){
+    __cache.remove(profileKey);
+    await sb.auth.signOut();
+    currentUser = null;
+    renderTopbar();
+    show('view-auth'); hide('view-app');
+    setMsg('msg-login', 'error', 'Esta área é exclusiva da administração do site.');
+    return;
+  }
+  currentUser.profile = prof;
+  renderTopbar();
+  show('view-app'); hide('view-auth');
+  load();
+}
+
+$('form-login').addEventListener('submit', async function(e){
+  e.preventDefault();
+  setMsg('msg-login', '', '');
+  const email = $('login-email').value.trim();
+  const password = $('login-password').value;
+  const { error } = await sb.auth.signInWithPassword({ email, password });
+  if (error){ setMsg('msg-login', 'error', escapeHtml(error.message)); return; }
+  await checkSession();
+});
+
+// Load / render ----------------------------------------------------------
+async function load(){
+  $('clist-wrap').innerHTML = '<div class="loading"><span class="spinner"></span>Carregando comentários...</div>';
+  setMsg('msg-global', '', '');
+  const { data, error } = await sb.from('blog_comments')
+    .select('id, post_slug, post_title, parent_id, author_name, author_email, is_admin, content, status, created_at, user_agent')
+    .order('created_at', { ascending: false })
+    .limit(500);
+  if (error){
+    $('clist-wrap').innerHTML = '';
+    setMsg('msg-global', 'error', 'Erro ao carregar: ' + escapeHtml(error.message));
+    return;
+  }
+  allComments = data || [];
+  updateCounts();
+  renderList();
+}
+
+function updateCounts(){
+  let p=0, a=0, r=0;
+  allComments.forEach(c => {
+    if (c.status === 'pendente') p++;
+    else if (c.status === 'aprovado') a++;
+    else if (c.status === 'rejeitado') r++;
+  });
+  $('count-pendente').textContent  = p;
+  $('count-aprovado').textContent  = a;
+  $('count-rejeitado').textContent = r;
+  $('count-todos').textContent     = allComments.length;
+}
+
+function filterList(){
+  const term = currentTerm.toLowerCase();
+  return allComments.filter(c => {
+    if (currentTab !== 'todos' && c.status !== currentTab) return false;
+    if (!term) return true;
+    return (
+      (c.author_name  || '').toLowerCase().includes(term) ||
+      (c.author_email || '').toLowerCase().includes(term) ||
+      (c.content      || '').toLowerCase().includes(term) ||
+      (c.post_title   || '').toLowerCase().includes(term) ||
+      (c.post_slug    || '').toLowerCase().includes(term)
+    );
+  });
+}
+
+function renderList(){
+  const rows = filterList();
+  const wrap = $('clist-wrap');
+  if (rows.length === 0){
+    wrap.innerHTML = '<div class="empty-state">Nenhum comentário neste filtro.</div>';
+    return;
+  }
+  const idToComment = {};
+  allComments.forEach(c => { idToComment[c.id] = c; });
+
+  const html = ['<div class="clist">'];
+  rows.forEach(c => {
+    const cls = c.status === 'pendente' ? 'is-pending' : c.status === 'aprovado' ? 'is-approved' : 'is-rejected';
+    const parent = c.parent_id ? idToComment[c.parent_id] : null;
+    html.push(
+      '<article class="citem ' + cls + '" data-id="' + c.id + '">' +
+        '<div class="citem-head">' +
+          '<span class="citem-name">' + escapeHtml(c.author_name) + '</span>' +
+          (c.author_email ? '<span class="citem-email">&lt;' + escapeHtml(c.author_email) + '&gt;</span>' : '') +
+          '<span class="citem-status ' + c.status + '">' + c.status + '</span>' +
+          (c.is_admin ? '<span class="citem-status admin-badge">Resposta admin</span>' : '') +
+          '<span class="citem-date">' + escapeHtml(fmtDate(c.created_at)) + '</span>' +
+        '</div>' +
+        '<div class="citem-post">' +
+          'Post: <a href="' + escapeHtml(c.post_slug) + '" target="_blank" rel="noopener">' +
+            escapeHtml(c.post_title || c.post_slug) +
+          '</a>' +
+        '</div>' +
+        (parent ? '<div class="citem-reply-to">↳ Em resposta a <strong>' + escapeHtml(parent.author_name) + '</strong>: "' + escapeHtml((parent.content || '').slice(0, 120)) + (parent.content && parent.content.length > 120 ? '…' : '') + '"</div>' : '') +
+        '<div class="citem-body">' + escapeHtml(c.content) + '</div>' +
+        '<div class="citem-actions">' +
+          (c.status !== 'aprovado' ? '<button class="btn-success"  data-act="aprovar">Aprovar</button>' : '') +
+          (c.status !== 'rejeitado'? '<button class="btn-secondary" data-act="rejeitar">Rejeitar</button>' : '') +
+          (c.status !== 'pendente' ? '<button class="btn-secondary" data-act="repor">Voltar para pendente</button>' : '') +
+          '<button class="btn-secondary" data-act="responder">Responder</button>' +
+          '<button class="btn-danger" data-act="excluir">Excluir</button>' +
+        '</div>' +
+        '<div class="citem-reply-box" data-reply-box hidden>' +
+          '<textarea data-reply-text placeholder="Sua resposta como Dra. Vandressa (será publicada já aprovada)..."></textarea>' +
+          '<div class="row">' +
+            '<button class="btn-primary" data-act="enviar-resposta">Publicar resposta</button>' +
+            '<button class="btn-secondary" data-act="cancelar-resposta">Cancelar</button>' +
+          '</div>' +
+        '</div>' +
+      '</article>'
+    );
+  });
+  html.push('</div>');
+  wrap.innerHTML = html.join('');
+}
+
+// Ações ------------------------------------------------------------------
+async function updateStatus(id, status){
+  const { error } = await sb.from('blog_comments')
+    .update({ status: status, moderated_at: new Date().toISOString(), moderated_by: currentUser.id })
+    .eq('id', id);
+  if (error){ setMsg('msg-global', 'error', 'Erro: ' + escapeHtml(error.message)); return; }
+  const c = allComments.find(x => x.id === id);
+  if (c) c.status = status;
+  updateCounts();
+  renderList();
+}
+
+async function deleteComment(id){
+  if (!confirm('Excluir este comentário em definitivo?')) return;
+  const { error } = await sb.from('blog_comments').delete().eq('id', id);
+  if (error){ setMsg('msg-global', 'error', 'Erro: ' + escapeHtml(error.message)); return; }
+  allComments = allComments.filter(c => c.id !== id);
+  updateCounts();
+  renderList();
+}
+
+async function sendReply(parent, text){
+  text = (text || '').trim();
+  if (text.length < 2){ setMsg('msg-global', 'error', 'Escreva o texto da resposta.'); return false; }
+  const adminName =
+    (currentUser && currentUser.profile && currentUser.profile.full_name) || ADMIN_NAME;
+  const payload = {
+    post_slug:    parent.post_slug,
+    post_title:   parent.post_title,
+    parent_id:    parent.id,
+    author_name:  adminName,
+    author_email: currentUser.email || null,
+    is_admin:     true,
+    content:      text,
+    status:       'aprovado',
+    moderated_at: new Date().toISOString(),
+    moderated_by: currentUser.id
+  };
+  const { data, error } = await sb.from('blog_comments').insert(payload).select().single();
+  if (error){ setMsg('msg-global', 'error', 'Erro: ' + escapeHtml(error.message)); return false; }
+  if (data) allComments.unshift(data);
+  updateCounts();
+  renderList();
+  setMsg('msg-global', 'success', 'Resposta publicada.');
+  return true;
+}
+
+// Eventos ----------------------------------------------------------------
+document.addEventListener('click', async function(e){
+  const tab = e.target.closest('.tab');
+  if (tab){
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('is-active'));
+    tab.classList.add('is-active');
+    currentTab = tab.dataset.status;
+    renderList();
+    return;
+  }
+  if (e.target.id === 'btn-refresh'){ load(); return; }
+  const btn = e.target.closest('button[data-act]');
+  if (!btn) return;
+  const item = btn.closest('.citem');
+  if (!item) return;
+  const id = item.dataset.id;
+  const c  = allComments.find(x => x.id === id);
+  if (!c) return;
+  const act = btn.dataset.act;
+  if (act === 'aprovar')   return updateStatus(id, 'aprovado');
+  if (act === 'rejeitar')  return updateStatus(id, 'rejeitado');
+  if (act === 'repor')     return updateStatus(id, 'pendente');
+  if (act === 'excluir')   return deleteComment(id);
+  if (act === 'responder'){
+    const box = item.querySelector('[data-reply-box]');
+    box.hidden = !box.hidden;
+    if (!box.hidden) box.querySelector('textarea').focus();
+    return;
+  }
+  if (act === 'cancelar-resposta'){
+    item.querySelector('[data-reply-box]').hidden = true;
+    return;
+  }
+  if (act === 'enviar-resposta'){
+    const text = item.querySelector('[data-reply-text]').value;
+    btn.disabled = true;
+    const ok = await sendReply(c, text);
+    btn.disabled = false;
+    if (ok){
+      const box = item.querySelector('[data-reply-box]');
+      if (box) box.hidden = true;
+    }
+    return;
+  }
+});
+
+$('search-input').addEventListener('input', function(){
+  currentTerm = this.value || '';
+  renderList();
+});
+
+// Boot -------------------------------------------------------------------
+checkSession();
+sb.auth.onAuthStateChange(function(_evt){ checkSession(); });
+
+}
+</script>
+
+</body>
+</html>

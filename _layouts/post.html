@@ -19,6 +19,10 @@ layout: default
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         {% assign palavras = content | strip_html | number_of_words %}{{ palavras | divided_by: 180 | at_least: 1 }} min de leitura
       </span>
+      <span class="post-views" id="postViews" hidden aria-live="polite">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
+        <span><b id="postViewsCount">0</b> <span id="postViewsLabel">visualizações</span></span>
+      </span>
       <span>Por {{ page.author | default: site.author.name }} · OAB/CE 46.161</span>
     </div>
   </header>
@@ -46,6 +50,53 @@ layout: default
       <a href="/#atendimento" class="btn-outline-gold">Verificar meu direito agora</a>
     </div>
   </div>
+
+  {% if site.supabase_url != "" and site.supabase_anon_key != "" %}
+  <section class="post-comments" id="postComments"
+           data-post-slug="{{ page.url }}"
+           data-post-title="{{ page.title | escape }}"
+           data-post-published="{{ page.date | date: '%Y-%m-%d' }}">
+    <h2>Comentários</h2>
+    <p class="pc-sub">Compartilhe sua dúvida ou experiência. Os comentários passam por moderação antes de serem publicados.</p>
+
+    <div class="pc-list" id="pcList">
+      <div class="pc-empty" id="pcLoading">Carregando comentários…</div>
+    </div>
+
+    <div class="pc-form-wrap">
+      <h3>Deixar um comentário ou dúvida</h3>
+      <p class="pc-note">Não publique dados pessoais sensíveis (CPF, número de benefício, número de processo). Seu e-mail é obrigatório para comentar e nunca aparece para outros leitores.</p>
+
+      <div class="pc-replying-to" id="pcReplyingTo" hidden>
+        <span>Respondendo a <strong id="pcReplyTarget">—</strong></span>
+        <button type="button" id="pcCancelReply">Cancelar</button>
+      </div>
+
+      <form class="pc-form" id="pcForm" autocomplete="on">
+        <div class="pc-form-row">
+          <div>
+            <label for="pcName">Nome*</label>
+            <input type="text" id="pcName" required maxlength="80" autocomplete="name">
+          </div>
+          <div>
+            <label for="pcEmail">E-mail*</label>
+            <input type="email" id="pcEmail" required maxlength="120" autocomplete="email">
+          </div>
+        </div>
+        <div>
+          <label for="pcContent">Comentário*</label>
+          <textarea id="pcContent" required minlength="2" maxlength="4000"></textarea>
+        </div>
+        <div class="pc-hp" aria-hidden="true">
+          <label for="pcWebsite">Não preencha este campo</label>
+          <input type="text" id="pcWebsite" tabindex="-1" autocomplete="off">
+        </div>
+        <button type="submit" class="pc-submit" id="pcSubmit">Enviar comentário</button>
+        <div id="pcMsg"></div>
+      </form>
+    </div>
+  </section>
+  {% endif %}
 
   {% assign relacionados = "" | split: "" %}
   {% for p in site.posts %}
@@ -75,3 +126,217 @@ layout: default
   <p class="post-disclaimer">Este artigo tem caráter exclusivamente informativo e não substitui a orientação jurídica individualizada. Cada caso possui particularidades que exigem análise por profissional habilitado.</p>
 
 </article>
+
+{% if site.supabase_url != "" and site.supabase_anon_key != "" %}
+<script>
+/* Contador de visitas — mostra o valor em cache na hora e atualiza em
+   segundo plano via fetch direto na RPC (sem esperar a lib do CDN). */
+(function(){
+  var SB  = '{{ site.supabase_url }}';
+  var KEY = '{{ site.supabase_anon_key }}';
+
+  var viewsEl = document.getElementById('postViews');
+  var countEl = document.getElementById('postViewsCount');
+  var labelEl = document.getElementById('postViewsLabel');
+  var cRoot   = document.getElementById('postComments');
+  if (!SB || !KEY || !viewsEl || !countEl || !cRoot) return;
+
+  var slug      = cRoot.dataset.postSlug;
+  var title     = cRoot.dataset.postTitle;
+  var published = cRoot.dataset.postPublished || null;
+  if (!slug || slug.charAt(0) !== '/') return;
+
+  function show(n){
+    var num = Number(n);
+    if (!isFinite(num) || num < 0) num = 0;
+    countEl.textContent = num.toLocaleString('pt-BR');
+    if (labelEl) labelEl.textContent = num === 1 ? 'visualização' : 'visualizações';
+    viewsEl.hidden = false;
+  }
+
+  var cacheKey = 'pvn:' + slug;   // último total conhecido
+  var sessKey  = 'pv:'  + slug;   // já contou nesta sessão?
+
+  try {
+    var cached = localStorage.getItem(cacheKey);
+    if (cached !== null) show(cached);
+  } catch(e){}
+
+  var counted = false;
+  try { counted = sessionStorage.getItem(sessKey) === '1'; } catch(e){}
+
+  function call(fn, body){
+    return fetch(SB + '/rest/v1/rpc/' + fn, {
+      method: 'POST',
+      headers: { 'apikey': KEY, 'Authorization': 'Bearer ' + KEY, 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    }).then(function(r){ return r.ok ? r.json() : Promise.reject(r.status); });
+  }
+
+  function store(n){
+    try { localStorage.setItem(cacheKey, String(n)); } catch(e){}
+    show(n);
+  }
+
+  if (counted){
+    call('get_post_views', { p_slug: slug }).then(store).catch(function(){});
+  } else {
+    call('increment_post_view', { p_slug: slug, p_title: title, p_published_at: published })
+      .then(function(n){ try { sessionStorage.setItem(sessKey, '1'); } catch(e){} store(n); })
+      .catch(function(){ call('get_post_views', { p_slug: slug }).then(store).catch(function(){}); });
+  }
+})();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+(function(){
+  var SUPABASE_URL      = '{{ site.supabase_url }}';
+  var SUPABASE_ANON_KEY = '{{ site.supabase_anon_key }}';
+  if (!window.supabase || !SUPABASE_URL || !SUPABASE_ANON_KEY) return;
+  var sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+    auth: { persistSession: false, storageKey: 'blog-comments-anon' }
+  });
+
+  var root      = document.getElementById('postComments');
+  if (!root) return;
+  var postSlug  = root.dataset.postSlug;
+  var postTitle = root.dataset.postTitle;
+  var listEl    = document.getElementById('pcList');
+  var form      = document.getElementById('pcForm');
+  var submitBtn = document.getElementById('pcSubmit');
+  var msgEl     = document.getElementById('pcMsg');
+  var replyBox  = document.getElementById('pcReplyingTo');
+  var replyTgt  = document.getElementById('pcReplyTarget');
+  var cancelRpl = document.getElementById('pcCancelReply');
+  var replyTo   = null;
+
+  function escapeHtml(s){
+    return String(s == null ? '' : s)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+  }
+  function fmtDate(iso){
+    if (!iso) return '';
+    var d = new Date(iso);
+    if (isNaN(d.getTime())) return '';
+    var months = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+    var dd = String(d.getDate()).padStart(2,'0');
+    var mm = months[d.getMonth()];
+    var hh = String(d.getHours()).padStart(2,'0');
+    var mi = String(d.getMinutes()).padStart(2,'0');
+    return dd + ' de ' + mm + ' · ' + hh + ':' + mi;
+  }
+  function setMsg(type, text){
+    if (!text){ msgEl.innerHTML = ''; return; }
+    msgEl.innerHTML = '<div class="pc-msg ' + type + '">' + escapeHtml(text) + '</div>';
+  }
+
+  function renderTree(rows){
+    listEl.innerHTML = '';
+    if (!rows || rows.length === 0){
+      listEl.innerHTML = '<div class="pc-empty">Ainda não há comentários. Seja o primeiro a comentar.</div>';
+      return;
+    }
+    var byParent = {};
+    rows.forEach(function(r){
+      var k = r.parent_id || '__root__';
+      (byParent[k] = byParent[k] || []).push(r);
+    });
+    function render(parentKey, depth){
+      var arr = byParent[parentKey] || [];
+      arr.forEach(function(r){
+        var div = document.createElement('div');
+        div.className = 'pc-item' + (depth > 0 ? ' is-reply' : '') + (r.is_admin ? ' is-admin' : '');
+        div.innerHTML =
+          '<div class="pc-head">' +
+            '<span class="pc-name">' + escapeHtml(r.author_name) + '</span>' +
+            (r.is_admin ? '<span class="pc-badge">Dra. Vandressa</span>' : '') +
+            '<span class="pc-date">' + fmtDate(r.created_at) + '</span>' +
+          '</div>' +
+          '<div class="pc-body">' + escapeHtml(r.content) + '</div>' +
+          (depth < 2 ? '<button class="pc-reply-btn" type="button" data-reply-id="' + r.id + '" data-reply-name="' + escapeHtml(r.author_name) + '">Responder</button>' : '');
+        listEl.appendChild(div);
+        render(r.id, depth + 1);
+      });
+    }
+    render('__root__', 0);
+  }
+
+  function load(){
+    sb.from('blog_comments_public')
+      .select('id, post_slug, parent_id, author_name, is_admin, content, created_at')
+      .eq('post_slug', postSlug)
+      .order('created_at', { ascending: true })
+      .then(function(res){
+        if (res.error){
+          listEl.innerHTML = '<div class="pc-empty">Não foi possível carregar os comentários no momento.</div>';
+          return;
+        }
+        renderTree(res.data || []);
+      });
+  }
+
+  listEl.addEventListener('click', function(e){
+    var btn = e.target.closest('.pc-reply-btn');
+    if (!btn) return;
+    replyTo = btn.dataset.replyId;
+    replyTgt.textContent = btn.dataset.replyName;
+    replyBox.hidden = false;
+    document.getElementById('pcContent').focus();
+    replyBox.scrollIntoView({ behavior:'smooth', block:'center' });
+  });
+
+  cancelRpl.addEventListener('click', function(){
+    replyTo = null;
+    replyBox.hidden = true;
+  });
+
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    setMsg('', '');
+    var name    = document.getElementById('pcName').value.trim();
+    var email   = document.getElementById('pcEmail').value.trim();
+    var content = document.getElementById('pcContent').value.trim();
+    var hp      = document.getElementById('pcWebsite').value;
+    if (name.length < 2) { setMsg('err', 'Informe seu nome.'); return; }
+    if (!EMAIL_RE.test(email)) { setMsg('err', 'Informe um e-mail válido. Você receberá a resposta da Dra. Vandressa por ele.'); return; }
+    if (content.length < 2) { setMsg('err', 'Escreva uma mensagem.'); return; }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando…';
+
+    sb.from('blog_comments').insert({
+      post_slug:    postSlug,
+      post_title:   postTitle,
+      parent_id:    replyTo,
+      author_name:  name,
+      author_email: email,
+      content:      content,
+      honeypot:     hp || null,
+      user_agent:   navigator.userAgent.slice(0, 240)
+    }).then(function(res){
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Enviar comentário';
+      if (res.error){
+        var m = (res.error.message || '').toLowerCase();
+        if (m.indexOf('spam_detected') >= 0){
+          setMsg('err', 'Não foi possível enviar o comentário.');
+        } else {
+          setMsg('err', 'Erro ao enviar: ' + res.error.message);
+        }
+        return;
+      }
+      form.reset();
+      replyTo = null;
+      replyBox.hidden = true;
+      setMsg('ok', 'Comentário enviado. Ele aparece aqui após a aprovação da moderação.');
+    });
+  });
+
+  load();
+})();
+</script>
+{% endif %}

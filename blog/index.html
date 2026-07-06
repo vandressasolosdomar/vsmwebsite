@@ -20,7 +20,42 @@ permalink: /blog/
     <span class="post-card-meta">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
       {% include date-pt.html date=post.date %}
+      <span class="post-card-views" data-views-slug="{{ post.url }}" hidden>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
+        <b>0</b>
+      </span>
     </span>
   </a>
   {% endfor %}
 </div>
+
+{% if site.supabase_url != "" and site.supabase_anon_key != "" %}
+<script>
+/* Visualizações nos cards — leitura em lote, sem incrementar. */
+(function(){
+  var SB  = '{{ site.supabase_url }}';
+  var KEY = '{{ site.supabase_anon_key }}';
+  var els = document.querySelectorAll('[data-views-slug]');
+  if (!SB || !KEY || !els.length) return;
+
+  var slugs = [];
+  els.forEach(function(el){ slugs.push(el.dataset.viewsSlug); });
+
+  fetch(SB + '/rest/v1/rpc/get_posts_views', {
+    method: 'POST',
+    headers: { 'apikey': KEY, 'Authorization': 'Bearer ' + KEY, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ p_slugs: slugs })
+  }).then(function(r){ return r.ok ? r.json() : Promise.reject(r.status); })
+    .then(function(rows){
+      var map = {};
+      (rows || []).forEach(function(r){ map[r.slug] = r.total; });
+      els.forEach(function(el){
+        var n = Number(map[el.dataset.viewsSlug]);
+        if (!isFinite(n) || n <= 0) return;
+        el.querySelector('b').textContent = n.toLocaleString('pt-BR');
+        el.hidden = false;
+      });
+    }).catch(function(){});
+})();
+</script>
+{% endif %}
