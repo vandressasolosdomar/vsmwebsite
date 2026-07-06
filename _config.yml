@@ -33,8 +33,8 @@ feed:
 # Supabase do blog (comentários + visualizações) — projeto próprio da Vandressa.
 # Preencha após rodar supabase/blog-admin.sql (Project Settings -> API).
 # Enquanto vazio, o site funciona normalmente, sem comentários nem contador.
-supabase_url: ""
-supabase_anon_key: ""
+supabase_url: "https://afuitmdzswmogngogcbf.supabase.co"
+supabase_anon_key: "sb_publishable_vM2CwkPiL5iIBSpmd6Y6lA_Xzt4QRzH"
 
 defaults:
   - scope:
