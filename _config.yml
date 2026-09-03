@@ -20,6 +20,15 @@ social:
 # URLs dos posts: advsolosdomar.com.br/blog/nome-do-post/
 permalink: /blog/:title/
 
+# ── PUBLICAÇÃO AGENDADA ─────────────────────────────────────────────
+# future: false  =>  post com data futura NÃO entra no site.
+# O site é reconstruído todos os dias pelo GitHub Actions
+# (.github/workflows/publicar-agendado.yml), então cada post do blog
+# aparece sozinho, na madrugada da data escrita no nome do arquivo.
+# NUNCA mude para true: isso publicaria todos os posts agendados de uma vez.
+future: false
+unpublished: false
+
 markdown: kramdown
 
 plugins:
